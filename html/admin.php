@@ -67,13 +67,7 @@ if (isset($_POST['envoiprojet'])) {
         } else {
             echo "Erreur lors du téléchargement du fichier.<br>";
         }
-
-        // L'ID que vous souhaitez insérer (si c'est une valeur fixe ou provenant d'une autre source)
-        $id = 5; // Assurez-vous que cet ID est correct et n'est pas auto-incrémenté
-
-        // Préparer la requête SQL pour l'insertion
-        // Assurez-vous que les types sont bien respectés
-        $sendProjet = $conn->prepare("INSERT INTO projet (id, titre, Date1, texte, competence1, competence2, competence3, fichier, nom) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sendProjet = $conn->prepare("INSERT INTO projet (Titre, Date1, Texte, Competence1, Competence2, Competence3, Fichier, Nom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
         // Vérifier si la préparation de la requête a échoué
         if ($sendProjet === false) {
@@ -83,7 +77,8 @@ if (isset($_POST['envoiprojet'])) {
         // Lier les paramètres de la requête
         // 'i' pour integer, 's' pour string
         // id est un entier, le reste est une chaîne de caractères
-        $sendProjet->bind_param('issssssss', $id, $titre, $date, $texte, $competence1, $competence2, $competence3, $uploadPath, $_SESSION['pseudo']);
+        $sendProjet->bind_param('ssssssss', $titre, $date, $texte, $competence1, $competence2, $competence3, $uploadPath, $_SESSION['pseudo']);
+
 
         // Exécuter la requête
         if ($sendProjet->execute()) {
@@ -110,6 +105,7 @@ echo "<form method='POST' action='' enctype='multipart/form-data'>
     <input type='text' name='Competence3' autocomplete='off' placeholder='Compétence 3' required><br>
     <input type='file' name='file' id='file' required><br>
     <button type='submit' name='envoiprojet'>Envoyer</button>
+    <button type='submit' name='viewprojet'>Voir l'apperçu</button>
 </form>";
 ?>
 
@@ -133,7 +129,35 @@ echo "<form method='POST' action='' enctype='multipart/form-data'>
 	>
 </head>
 <body>
+    <?php
+if (isset($_POST['viewprojet'])){
+    $titre = $_POST['Titre'];
+    $date = $_POST['Date'];
+    $texte = $_POST['Texte'];
+    $competence1 = $_POST['Competence1'];
+    $competence2 = $_POST['Competence2'];
+    $competence3 = $_POST['Competence3'];
 
+
+    echo "<div class='projet'>";
+    echo "<h2 class='title_projet'>". $titre ."</h2>";
+    echo "<p class='date_projet'>". $date ."</p>";
+    echo "<p class='text_description'>". $texte ."</p>";
+    echo "<div class='ContainerCompetence'>
+    <div class='competences2'>
+        <div class='competence2'>
+            <img src='../img/logo.png' class='logo2'>
+            <p class='desc_competence'>". $competence1 ."</div><div class='competence2'>
+            <img src='../img/logo.png' class='logo2'>
+            <p class='desc_competence'>". $competence2."</div><div class='competence2'>
+            <img src='../img/logo.png' class='logo2'>
+            <p class='desc_competence'>". $competence3 ."</div></div><a href='' download>
+    <button class='Download'>Télécharger les fichiers du projet</button>
+</a></div>";
+
+    echo "</div>";
+}
+?>
 </body>
 </html>
 

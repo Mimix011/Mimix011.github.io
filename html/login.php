@@ -13,7 +13,6 @@ if(isset($_POST['envoi'])){
 			$_SESSION['pseudo'] = $pseudo;
 			$_SESSION['mdp'] = $mdp;
 			$_SESSION['id'] = $recupUser->fetch()['id'];
-			exit();
 			header('Location: admin.php');
 
 

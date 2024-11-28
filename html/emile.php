@@ -217,7 +217,7 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='projet' id=". strval($row['ID']) .">";
                     echo "<h2 class='title_projet'>". $row['Titre'] ."</h2>";
-                    echo "<p class='date_projet'>". $row['Date'] ."</p>";
+                    echo "<p class='date_projet'>". $row['Date1'] ."</p>";
                     echo "<p class='text_description'>". $row['Texte'] ."</p>";
                     echo "<div class='ContainerCompetence'>
                     <div class='competences2'>
