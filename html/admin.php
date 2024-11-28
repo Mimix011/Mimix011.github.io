@@ -1,3 +1,4 @@
+
 <!-- inclusion des variables et fonctions -->
 <?php
 session_start();
@@ -26,3 +27,4 @@ if (isset($_SESSION['id']) !== null){
 
 </body>
 </html>
+

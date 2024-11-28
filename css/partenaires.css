@@ -1,3 +1,5 @@
+
+
 .partenaires {
     display: flex;
     flex-direction: column;
@@ -17,6 +19,8 @@ h2 {
     overflow: hidden;
     white-space: nowrap;
     margin: 0 auto;
+    position: relative;
+    
 }
 
 .partenaires_rotation ul {
@@ -34,7 +38,10 @@ h2 {
 .Partenaires_logo {
     width: 100px; /* Ajustez la taille des logos selon vos besoins */
     height: auto;
+  
 }
+
+
 
 @keyframes scroll {
     0% {
@@ -50,10 +57,12 @@ body {
   font-family: 'Silkscreen', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   color: white;
   overflow-x: hidden;
   background: #121212;
+  width: 100%;
+
 
 }
 
