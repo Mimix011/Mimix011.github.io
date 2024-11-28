@@ -10,14 +10,14 @@ if (isset($_SESSION['id']) !== null){
 	echo "tu n'es pas connecter <br>";
 }
 ?>
-
 <?php
+// Démarrer la session// Assurez-vous que la session est démarrée
+
 // Informations de connexion à la base de données
 $host = "localhost"; // Serveur
 $username = "root";  // Nom d'utilisateur
-$password = "root";      // Mot de passe
+$password = "root";  // Mot de passe
 $dbname = "cyberfolio"; // Nom de la base de données
-$nom = $_SESSION['pseudo'];
 
 // Connexion à la base
 $conn = new mysqli($host, $username, $password, $dbname);
@@ -28,6 +28,7 @@ if ($conn->connect_error) {
 }
 
 if (isset($_POST['envoiprojet'])) {
+    // Vérifier si tous les champs sont remplis et si un fichier est téléchargé
     if (!empty($_POST['Titre']) && !empty($_POST['Date']) && !empty($_POST['Texte']) && !empty($_POST['Competence1']) && !empty($_POST['Competence2']) && !empty($_POST['Competence3']) && isset($_FILES['file'])) {
 
         // Récupérer les données du formulaire
@@ -71,7 +72,8 @@ if (isset($_POST['envoiprojet'])) {
         $id = 5; // Assurez-vous que cet ID est correct et n'est pas auto-incrémenté
 
         // Préparer la requête SQL pour l'insertion
-        $sendProjet = $conn->prepare("INSERT INTO projet (id, titre, Date1, texte, competence1, competence2, competence3, fichier, nom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        // Assurez-vous que les types sont bien respectés
+        $sendProjet = $conn->prepare("INSERT INTO projet (id, titre, Date1, texte, competence1, competence2, competence3, fichier, nom) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         // Vérifier si la préparation de la requête a échoué
         if ($sendProjet === false) {
@@ -79,8 +81,9 @@ if (isset($_POST['envoiprojet'])) {
         }
 
         // Lier les paramètres de la requête
-        // 'i' pour integer et 's' pour string
-        $sendProjet->bind_param('isssssssss', $id, $titre, $date, $texte, $competence1, $competence2, $competence3, $uploadPath, $_SESSION['pseudo']);
+        // 'i' pour integer, 's' pour string
+        // id est un entier, le reste est une chaîne de caractères
+        $sendProjet->bind_param('issssssss', $id, $titre, $date, $texte, $competence1, $competence2, $competence3, $uploadPath, $_SESSION['pseudo']);
 
         // Exécuter la requête
         if ($sendProjet->execute()) {
@@ -96,7 +99,7 @@ if (isset($_POST['envoiprojet'])) {
     }
 }
 
-// Afficher le formulaire HTML
+// Formulaire HTML
 echo "Ajouter un Projet<br>";
 echo "<form method='POST' action='' enctype='multipart/form-data'>
     <input type='text' name='Titre' autocomplete='off' placeholder='Titre' required><br>
@@ -109,6 +112,7 @@ echo "<form method='POST' action='' enctype='multipart/form-data'>
     <button type='submit' name='envoiprojet'>Envoyer</button>
 </form>";
 ?>
+
 
 
 
