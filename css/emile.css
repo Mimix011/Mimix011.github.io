@@ -1,0 +1,426 @@
+@media screen and (min-width: 850px) {
+    
+
+
+
+    body{
+
+        width: 100%;
+        overflow-x: hidden;
+       height: 850px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: 0;
+        background-size: cover;
+        background-image: url('../img/background.jpg');
+    }
+
+
+    .MainContent{
+        margin-top: 50px;
+        width: 800px;
+        height: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        opacity: 0.8;
+    }
+
+    .Profil{
+        background-color: rgb(224,224,224);
+        width: 245px;
+        height: 500px;
+        float: right;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px black;
+    }
+    .FirstProfil{
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        height: 280px;
+        align-items: center;
+        justify-content:center
+    }
+    .photodeprofil{
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    .SecondProfil{
+        width: 80%;
+        height: 180px;
+        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+    }
+    .Contacts{
+        height: auto;
+        width: 100%;
+        margin:0;
+        gap: 20px;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .Contact{
+        margin: 0;
+        width: 100%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        gap: 20px;
+    }
+    .texts{
+        display: inline;
+        flex-direction: column;
+        justify-content:center;
+        gap: 0;
+        vertical-align: middle;
+    }
+    .textecontact{
+        height:auto;
+        margin-top:0;
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+    .textecontact2{
+        height:auto;
+        margin-top:0;
+        margin-bottom: 0;
+        font-size: 11px;
+        font-weight: bold;
+        color:  rgb(72, 72, 72);
+    }
+    .logocontact{
+        height: 30px;
+    }
+
+
+
+    .Profil:hover{
+        transform: scale(1.01)
+    }
+
+    .FirstContent{
+        background-color: rgb(224, 224, 224);
+        width: 545px;
+        height: 500px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px black;
+    }
+    .FirstContent:hover{
+        transform: scale(1.01)
+    }
+    .SecondContent{
+        background-color: rgb(224, 224, 224);
+        width: 100%;
+        height: 290px;
+        margin-top: 10px;
+        border-radius: 20px;
+        flex-direction: row;
+        display: flex;
+        box-shadow: 0px 0px 15px black;
+    }
+    .SecondContent:hover{
+        transform: scale(1.01)
+    }
+    .navbar{
+        width: 55%;
+        height: 50px;
+        background-color: rgb(224, 224, 224);
+        margin-top: 240px;
+        border-radius: 20px 0px 20px 0px;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid black;
+        margin: 0;
+        float: right;
+        margin-left: 45%;
+    }
+    .FirstLink{
+        width: 33%;
+        height: 100%;
+        border-right: 1px solid black;
+    }
+    .SecondLink{
+        width:33%;
+        height: 100%;
+        border-right: 1px solid black;
+        
+    }
+    .titlecontent{
+        display: flex;
+        width: 100%;
+        height: 50px;
+        justify-content:center;
+        align-items: center;
+        margin: 0;
+        background-color: rgb(224,224,224);
+        border-radius: 20px 20px 0px 0px;
+    }
+    h3{
+        font-size:20px;
+        font-weight: bold;
+    }
+    .presentationtexte{
+        width: 100%;
+        margin-top:20px;
+    }
+    .TextePresentation{
+        width: 80%;
+        margin-left: 10%;
+        text-align: justify;
+    }
+    .activitercontent{
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 20px;
+    }
+    .activiter{
+        width: 25%;
+        background-color: rgb(206, 206, 206);
+        box-shadow: 0px 0px 5px black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        border-radius: 10px;
+
+        padding: 5px;
+    }
+    .texteactiviter{
+        text-align: justify;
+        font-size: 11px;
+        width: 90%;
+        margin: 0
+    }
+    .logoact{
+        width: 80px;
+        margin: 0
+    }
+    .titreactiviter{
+        margin: 0
+    }
+
+    .attributs{
+        width: 15%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(224, 224, 224);
+        border-radius: 20px 0 0 20px;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid black;
+     }
+
+    .attribut{
+        margin: 0px;
+        width: 100%;
+        height: 33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .logoatt{
+        width: 50px;
+        margin-bottom: 0;
+    }
+    .attri{
+        margin: 0;
+        font-weight: bold;
+        font-size:12px;
+        margin-top: 2px;
+
+    }
+    .competencecontent{
+        width: 100%;
+        height: 240px;
+        margin: 0;
+    }
+    .sousblock{
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+    }
+    .competences{
+        width: 98%;
+        height:220px;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        padding-top: 10px;
+        justify-content: left;
+        max-width: 100%;
+        flex-wrap: wrap;
+        overflow: hidden;
+        margin: 0;
+    }
+    .competences{
+        overflow-y: scroll;
+        scrollbar-width: thin;
+    }
+    .competence2{
+        width:15%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 0;
+        align-items: center;
+    }
+
+    .logocomp{
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        object-fit: cover;
+        margin: 0;
+        border-radius: 100%;
+    }
+    .textcomp{
+        margin: 0;
+        font-size: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+
+
+    .ThirdLink{
+        width: 34%;
+        height: 100%;
+    }
+    h1{
+        text-align: center;
+        font-size: 20px;
+    }
+    .button{
+        width: 100%;
+        overflow: hidden;
+        height: 100%;
+    }
+
+
+
+    .MainContent2{
+        display: none;
+        margin-top: 50px;
+        width: 800px;
+        height: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        opacity: 0.8;
+        display: flex;
+        flex-direction: row;
+        
+    }
+    .ProjetContent{
+        width: 80%;
+        height: 100%;
+        background-color: rgb(224,224,224);
+        max-width: 80%;
+        box-shadow: 0px 0px 10px;
+    }
+    .h3{
+        margin-left: 13%;
+        width: 80%;
+        margin-top: 25px;
+    }
+
+    .projetindex{
+        background-color: rgb(224, 224, 224);
+        margin-left: 10px;
+        box-shadow: 0px 0px 10px;
+        height: 100%;
+        width: 20%;
+        max-width: 20%;
+    }
+    .projets{
+        width: 75%;
+        height: 82%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        scrollbar-color: black;
+        scrollbar-color: rgb(200,200,200) rgb(224,224,224);
+        scrollbar-width: thin;
+    }
+    .projet{
+        width: 90%;
+        background-color: rgb(227, 227, 227);
+        box-shadow: 0px 0px 10px black;
+        margin:0;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+        padding: 10px;
+    }
+    .title_projet{
+        text-align: center;
+        margin-top: 10px
+    }
+      .competences2{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        margin: 0;
+      }
+      .competence2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        
+      }
+      
+      .logo2{
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+      .Download{
+        width: 100%;
+        height: 50px;
+        border: 1px solid black;
+        background-color: rgb(0, 0, 0,0.1);
+        color: black;
+      }
+      .Download:hover{
+        background-color: rgb(0,0,0,0.5);
+        color: white;
+      }
+
+      .projetindex a{
+        color: black;
+        text-decoration: none;
+      }
+
+    .navbar2 div{
+        width: 100%;
+    }
+    
+      
+
+
+}
