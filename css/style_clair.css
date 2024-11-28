@@ -30,6 +30,8 @@ body {
   h2 {
     vertical-align: center;
     text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
   }
   
   .top-nav {

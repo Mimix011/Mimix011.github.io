@@ -1,6 +1,19 @@
 .titel_l{
-    position: relative;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 60px;
+    font-size: 33px;
+    font-family:'Silkscreen';
+    color: rgb(44, 158, 161);
+}
+.titel_l:hover{
+    text-shadow:
+    0px 0px 5px rgb(0, 217, 255),
+    0px 0px 10px rgb(0, 217, 255),
+    0px 0px 15px rgb(0, 217, 255),
+    0px 0px 20px rgb(0, 217, 255),
+    0px 0px 35px rgb(0, 217, 255);
 }
 
 
@@ -8,6 +21,7 @@
     position: relative;
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .search-bar{
@@ -18,8 +32,17 @@
     border: 3px  solid rgb(12, 204, 252, 0.795);
     border-radius: 5px;
     color:white;
-
 }
+
+.search-bar:hover{
+    text-shadow:
+    0px 0px 5px rgb(0, 217, 255),
+    0px 0px 10px rgb(0, 217, 255),
+    0px 0px 15px rgb(0, 217, 255),
+    0px 0px 20px rgb(0, 217, 255),
+    0px 0px 35px rgb(0, 217, 255);
+}
+
 .search-bar::placeholder{
     color: rgb(167, 227, 255);
 }
@@ -33,3 +56,19 @@
     width: 700px;
     filter: drop-shadow(30px 10px rgb(41, 109, 235));
 }
+
+.filtre{
+    display: flex;
+    position: relative; 
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:400px ;
+    margin-top: 100px;
+}
+
+.filtre1{
+    display: flex;
+    position: relative;
+    margin: 10px;
+}
+
