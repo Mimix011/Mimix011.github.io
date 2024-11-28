@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root','root');
 if(isset($_POST['envoi'])){
 	if (!empty($_POST['pseudo']) AND !empty($_POST['mdp'])){
@@ -7,7 +9,13 @@ if(isset($_POST['envoi'])){
 		$recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ? AND mdp = ?');
 		$recupUser->execute(array($pseudo,$mdp));
 		if ($recupUser->rowCount() > 0){
-			echo "connect";
+			$_SESSION['pseudo'] = $pseudo;
+			$_SESSION['mdp'] = $mdp;
+			$_SESSION['id'] = $recupUser->fetch()['id'];
+			exit();
+			header('Location: admin.php');
+
+
 		}else{
 			echo 'Le Username ou/et le Mot de passe est incorrect';
 		}

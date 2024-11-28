@@ -1,7 +1,13 @@
 <!-- inclusion des variables et fonctions -->
 <?php
-require_once(__DIR__ . '/variables.php');
-require_once(__DIR__ . '/functions.php');
+session_start();
+
+if (isset($_SESSION['id']) !== null){
+	echo $_SESSION['pseudo'];
+
+}else{
+	echo "tu n'es pas connecter";
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,27 +22,7 @@ require_once(__DIR__ . '/functions.php');
         	rel="stylesheet"
 	>
 </head>
-<body class="d-flex flex-column min-vh-100">
-	<div class="container">
-    	<!-- inclusion de l'entête du site -->
-    	<?php require_once(__DIR__ . '/header.php'); ?>
-    	<h1>Site de recettes</h1>
+<body>
 
-    	<!-- Formulaire de connexion -->
-    	<?php require_once(__DIR__ . '/login.php'); ?>
-
-    	<?php if (isset($loggedUser)) : ?>
-        	<?php foreach (getRecipes($recipes) as $recipe) : ?>
-            	<article>
-                	<h3><?php echo $recipe['title']; ?></h3>
-                	<div><?php echo $recipe['recipe']; ?></div>
-                	<i><?php echo displayAuthor($recipe['author'], $users); ?></i>
-            	</article>
-        	<?php endforeach ?>
-    	<?php endif; ?>
-	</div>
-
-	<!-- inclusion du bas de page du site -->
-	<?php require_once(__DIR__ . '/footer.php'); ?>
 </body>
 </html>
