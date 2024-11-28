@@ -1,0 +1,35 @@
+.titel_l{
+    position: relative;
+    text-align: center;
+}
+
+
+.search-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar{
+    text-align: center;
+    width: 600px;
+    height: 30px;
+    background-color: rgba(61, 54, 54, 0.253);
+    border: 3px  solid rgb(12, 204, 252, 0.795);
+    border-radius: 5px;
+    color:white;
+
+}
+.search-bar::placeholder{
+    color: rgb(167, 227, 255);
+}
+
+
+.search-bar:focus{
+    outline: none;
+    border: 5px;
+    border-color:rgb(67, 167, 233) ;
+    background-color:rgba(31, 31, 30, 0.932);
+    width: 700px;
+    filter: drop-shadow(30px 10px rgb(41, 109, 235));
+}
