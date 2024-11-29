@@ -47,18 +47,27 @@
             </div>
         </section>
 
-        <section class="filtre">
-            <div calss="filtre1">
-                <h2 class="f1">riri</h2>
-                <input class="fb1" type="text" placeholder="">
-            </div>
-            <div class="filtre2">
-                <h2 class="f2">dfdfd</h2>
-                <input class="fb2" type="text"  placeholder="">
-            </div>
-            <div class="filtre3">
-                <h2 class="f3">dfdfd</h2>
-                <input class="fb3"type="text"  placeholder="">
+        <section class="filtre"> 
+            <div class="row mb-3">
+
+                <div class="col">
+                    <label for="typeFilter" class="form-label">Filtrer par type :</label>
+                    <select id="typeFilter" class="form-select">
+                        <option value="">Tous</option>
+                        <option value="skill">Skills</option>
+                        <option value="certification">Certifications</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="nomFilter" class="form-label">Filtrer par nom :</label>
+                    <input type="text" id="nomFilter" class="search-nom" placeholder="Nom...">
+                </div>
+
+                <div class="col">
+                    <label for="contenuFilter" class="form-label">Filtrer par contenu :</label>
+                    <input type="text" id="contenuFilter" class="search-contenu" placeholder="Contenu...">
+                </div>
             </div>
         </section>
     </body>
