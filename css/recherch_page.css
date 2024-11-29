@@ -33,6 +33,12 @@
     border-radius: 40px;
     color:white;
 }
+.search-bar{
+    background-image: url(/img/recherche.png);
+    background-repeat:no-repeat ;
+    background-position: 20px center;
+    background-size: 40px 40px;
+}
 
 .search-bar:hover{
     text-shadow:
@@ -49,12 +55,17 @@
 
 
 .search-bar:focus{
-    outline: blue;
+    outline: none;
     border: 10px;
     border-color:rgb(67, 167, 233) ;
     background-color:rgba(31, 31, 30, 0.932);
     width: 750px;
+    
+    box-shadow: 0 0 30px rgb(0, 255, 255), 0 0 10px rgba(0, 247, 255, 0.6); /* Effet néon accentué au clic */
+      
 }
+
+
 
 .row {
     display: flex;
