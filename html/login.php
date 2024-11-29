@@ -6,7 +6,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root',
 if(isset($_POST['envoi'])){
 	if (!empty($_POST['pseudo']) AND !empty($_POST['mdp'])){
 		$pseudo = htmlspecialchars($_POST['pseudo']);
-		$mdp = sha1($_POST['mdp']);
+		$mdp = sha1( htmlspecialchars($_POST['mdp']));
 		$recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ? AND mdp = ?');
 		$recupUser->execute(array($pseudo,$mdp));
 		if ($recupUser->rowCount() > 0){

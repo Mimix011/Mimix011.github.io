@@ -125,46 +125,28 @@ if (isset($_POST['viewprojet'])) {
 
 
 if (isset($_POST['envoiexperience'])) {
-    if (!empty($_POST['Titre-2']) && !empty($_POST['Date-2']) && !empty($_POST['Texte-2']) && !empty($_POST['Competence1-2']) && !empty($_POST['Competence2-2']) && !empty($_POST['Competence3-2']) && isset($_FILES['file'])) {
-        $titre = $_POST['Titre'];
-        $date = $_POST['Date'];
-        $texte = $_POST['Texte'];
-        $competence1 = $_POST['Competence1'];
-        $competence2 = $_POST['Competence2'];
-        $competence3 = $_POST['Competence3'];
+    $conn = new mysqli($host, $username, $password, $dbname);
+    if (!empty($_POST['Titre2']) && !empty($_POST['Date2']) && !empty($_POST['Texte2']) && !empty($_POST['Competence12']) && !empty($_POST['Competence22']) && !empty($_POST['Competence32'])) {
+        $titre2 = $_POST['Titre2'];
+        $date2 = $_POST['Date2'];
+        $texte2 = $_POST['Texte2'];
+        $competence12 = $_POST['Competence12'];
+        $competence22 = $_POST['Competence22'];
+        $competence32 = $_POST['Competence32'];
 
-        // Gestion du téléchargement du fichier
-        $fileTmpPath = $_FILES['file']['tmp_name'];
-        $fileName = $_FILES['file']['name'];
-        $fileSize = $_FILES['file']['size'];
-        $fileType = $_FILES['file']['type'];
-        $fileError = $_FILES['file']['error'];
 
-        if ($fileError === 0) {
-            $uploadDir = 'emilefiles/';
-            if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-            $newFileName = uniqid('file_', true) . '.' . pathinfo($fileName, PATHINFO_EXTENSION);
-            $uploadPath = $uploadDir . $newFileName;
-            if (move_uploaded_file($fileTmpPath, $uploadPath)) {
-                echo "Console > Le fichier a été téléchargé avec succès.<br>";
-            } else {
-                echo "Console > Une erreur est survenue lors du téléchargement du fichier.<br>";
-            }
-        } else {
-            echo "Console > Erreur lors du téléchargement du fichier.<br>";
-        }
+
+      
 
         // Envoi du projet dans la base de données
-        $sendProjet = $conn->prepare("INSERT INTO projet (Titre, Date1, Texte, Competence1, Competence2, Competence3, Fichier, Nom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($sendProjet === false) {
+        $sendExp = $conn->prepare("INSERT INTO experience (Titre, Date1, Texte, Competence1, Competence2, Competence3, Nom) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        if ($sendExp === false) {
             die("Console > Erreur de préparation de la requête : " . $conn->error);
         }
 
-        $sendProjet->bind_param('ssssssss', $titre, $date, $texte, $competence1, $competence2, $competence3, $uploadPath, $_SESSION['pseudo']);
+        $sendExp->bind_param('ssssssss', $titre2, $date2, $texte2, $competence12, $competence22, $competence32, $_SESSION['pseudo']);
 
-        if ($sendProjet->execute()) {
+        if ($sendExp->execute()) {
             echo "Console > Titre ok<br>";
             echo "Console > Date ok<br>";
             echo "Console > Texte ok<br>";
@@ -172,38 +154,32 @@ if (isset($_POST['envoiexperience'])) {
             echo "Console >  Compétence 2 ok<br>";
             echo "Console >  Compétence 3 ok<br>";
             echo "Console > Projet ajouté avec succès!<br>";
-            $titre = null;
-            $date = null;
-            $texte = null;
-            $competence1 = null;
-            $competence2 = null;
-            $competence3 = null;
+            $titre2 = null;
+            $date2 = null;
+            $texte2 = null;
+            $competence12 = null;
+            $competence22 = null;
+            $competence32 = null;
 
-            // Gestion du téléchargement du fichier
-            $fileTmpPath = null;
-            $fileName = null;
-            $fileSize = null;
-            $fileType = null;
-            $fileError = null;
 
         } else {
-            echo "Console > Erreur lors de l'insertion du projet : " . $sendProjet->error . "<br>";
+            echo "Console > Erreur lors de l'insertion du projet : " . $sendExp->error . "<br>";
         }
 
-        $sendProjet->close();
+        $sendExp->close();
     } else {
         echo "Console > Veuillez remplir tous les champs et télécharger un fichier.<br>";
     }
 }
 
 // Si l'on clique sur "Voir l'aperçu", on récupère les valeurs
-if (isset($_POST['viewprojet'])) {
-    $titre = $_POST['Titre'];
-    $date = $_POST['Date'];
-    $texte = $_POST['Texte'];
-    $competence1 = $_POST['Competence1'];
-    $competence2 = $_POST['Competence2'];
-    $competence3 = $_POST['Competence3'];
+if (isset($_POST['viewprojet-2'])) {
+    $titre2 = $_POST['Titre-2'];
+    $date2 = $_POST['Date-2'];
+    $texte2 = $_POST['Texte-2'];
+    $competence12 = $_POST['Competence1-2'];
+    $competence22 = $_POST['Competence2-2'];
+    $competence32 = $_POST['Competence3-2'];
 }
 
 
@@ -232,7 +208,7 @@ if (isset($_POST['viewprojet'])) {
         <input type='text' name='Competence3' autocomplete='off' placeholder='Compétence 3' value="<?php echo isset($competence3) ? $competence3 : ''; ?>" required>
         <input type='file' name='file' id='file' required>
         <button type='submit' name='envoiprojet'>Envoyer</button>
-        <button type='submit' name='viewprojet'>Voir l'aperçu</button>
+        <button type='submit' name='viewexperience'>Voir l'aperçu</button>
     </form>
 
     <?php if (isset($titre)): ?>
@@ -266,15 +242,43 @@ if (isset($_POST['viewprojet'])) {
 
     <h2>Ajouter une Experience Professionel</h2>
     <form method='POST' action='' enctype='multipart/form-data' id="postexperience">
-        <input type='text' name='Titre-2' autocomplete='off' placeholder='Titre' value="<?php echo isset($titre) ? $titre : ''; ?>" required>
-        <input type='text' name='Date-2' autocomplete='off' placeholder='Date' value="<?php echo isset($date) ? $date : ''; ?>" required>
-        <textarea name='Text-2' placeholder='Texte' required><?php echo isset($texte) ? $texte : ''; ?></textarea>
-        <input type='text' name='Competence1-2' autocomplete='off' placeholder='Compétence 1' value="<?php echo isset($competence1) ? $competence1 : ''; ?>" required>
-        <input type='text' name='Competence2-2' autocomplete='off' placeholder='Compétence 2' value="<?php echo isset($competence2) ? $competence2 : ''; ?>" required>
-        <input type='text' name='Competence3-2' autocomplete='off' placeholder='Compétence 3' value="<?php echo isset($competence3) ? $competence3 : ''; ?>" required>
+        <input type='text' name='Titre2' autocomplete='off' placeholder='Titre' value="<?php echo isset($titre2) ? $titre2 : ''; ?>" required>
+        <input type='text' name='Date2' autocomplete='off' placeholder='Date' value="<?php echo isset($date2) ? $date2 : ''; ?>" required>
+        <textarea name='Text-2' placeholder='Texte' required><?php echo isset($texte) ? $texte2 : ''; ?></textarea>
+        <input type='text' name='Competence12' autocomplete='off' placeholder='Compétence 1' value="<?php echo isset($competence21) ? $competence12 : ''; ?>" required>
+        <input type='text' name='Competence22' autocomplete='off' placeholder='Compétence 2' value="<?php echo isset($competence22) ? $competence22 : ''; ?>" required>
+        <input type='text' name='Competence32' autocomplete='off' placeholder='Compétence 3' value="<?php echo isset($competence32) ? $competence32 : ''; ?>" required>
         <button type='submit' name='envoiexperience'>Envoyer</button>
         <button type='submit' name='viewexperience'>Voir l'aperçu</button>
     </form>
+
+    <?php if (isset($titre2)): ?>
+        <div class='projet'>
+            <h2 class='title_projet'><?php echo $titre2; ?></h2>
+            <p class='date_projet'><?php echo $date2; ?></p>
+            <p class='text_description'><?php echo $texte2; ?></p>
+            <div class='ContainerCompetence'>
+                <div class='competences2'>
+                    <div class='competence2'>
+                        <img src='../img/logo.png' class='logo2'>
+                        <p class='desc_competence'><?php echo $competence12; ?></p>
+                    </div>
+                    <div class='competence2'>
+                        <img src='../img/logo.png' class='logo2'>
+                        <p class='desc_competence'><?php echo $competence22; ?></p>
+                    </div>
+                    <div class='competence2'>
+                        <img src='../img/logo.png' class='logo2'>
+                        <p class='desc_competence'><?php echo $competence32; ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+
+
+
 </body>
 
 <style type="text/css">
