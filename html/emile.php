@@ -10,6 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
 </head>
 <body>
+<section class="top-nav">
+    <input id="menu-toggle" type="checkbox" />
+    <label class="menu-button-container" for="menu-toggle">
+      <div class="menu-button"></div>
+    </label>
+    <ul class="menu">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../html/partenaires.html">Partenaire</a></li>
+      <li><a href="../html/contact.html">Contact</a></li>
+      <li><a href="../html/Recherche.html">Recherche</a></li>
+    </ul>
+  <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
+  <img src="../img/guardiagif.gif" alt="Logo" class="logo" href="test.html">
+</a>
+</section>
 
 <?php
         
