@@ -9,6 +9,27 @@
     <link rel="stylesheet" href="../css/emeric.css">
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   </head>
+  <?php
+        
+        // Informations de connexion à la base de données
+        $host = "localhost"; // Serveur
+        $username = "root";  // Nom d'utilisateur
+        $password = "root";      // Mot de passe
+        $dbname = "cyberfolio"; // Nom de la base de données
+        $nom = "emeric";
+        
+        // Connexion à la base
+        $conn = new mysqli($host, $username, $password, $dbname);
+        
+        // Vérifiez la connexion
+        if ($conn->connect_error) {
+            die("Échec de la connexion : " . $conn->connect_error);
+        }
+        $conn->set_charset("utfmb4");
+        
+?>
+
+
   <body>
     <!-- Barre de navigation déroulante -->
     <section class="top-nav"> 
@@ -120,95 +141,43 @@
 
 
     <div class="ContainerProjet">
-      <div class="projet">
-        <h2 class='title_projet'>Pentest</h2>
-        <p class="date_projet">Octobre 2024</p>
-        <p class="description_projet">
-          AZZABI Arij nous à introduit la cybersécurité avec un premier projet de Pentest. <br>
-          Connaissances :<br>
-          - Outil de Collaboration (Git)<br>
-          - Utilisation de Kali Linux à l'aide d'une machine virtuel<br>
-          - Hébergement un site PHP en localhost (Uwamp, Docker)<br>
-          - Découverte d'outil de Pentest (BurpSuit)<br>
-          - Injection SQL, Modification des requêtes http, Broken Access Control, Inclusion de Fichier<br><br>
-          
-          Objectif du projet :<br>
-          - S'entrainer sur un site en localhost (Owasp Bricks)<br>
-          - Produire un rapport de test d'intrusion<br>
-          - recherche de faille et apprendre sur le métier de pentesteur <br>
-          - configurée un environnement virtuel sécurisée</p>
-
-        <div class="ContainerCompetence">
-          <div class="competences">
-            <div class="competence">
-              <img src="../img/logo.png" class="logo2">
-              <p class="desc_competence">competence</p>
-            </div>
-            <div class="competence">
-              <img src="../img/logo.png" class="logo2">
-              <p class="desc_competence">competence</p>
-            </div>
-            <div class="competence">
-              <img src="../img/logo.png" class="logo2">
-              <p class="desc_competence">competence</p>
-            </div>
-          </div>
-        </div>
-        <a href="dimitri.html" download>
-        <button class="Download">Télécharger les fichiers du projet</button>
-        </a>
-          <div class="projet01">
-            <h2 class='title_projet'>Osint </h2>
-            <p class="date_projet">novembre 2024</p>
-            <p class="description_projet">
-              Nous avons us un projet d'osint <br>
-              Connaissances :<br>
-              - Utilisation des d'outile d'osint (google map, google lens)<br>
-              - Utilisation de minmap pour ordonner nos recherche<br>
-              
-              Notre missions:<br>
-              - Touver le plus d'information sur une  entreprise<br>
-              - Produire un rapport d'osint</p>
       
-            <div class="ContainerCompetence">
-              <div class="competences">
-                <div class="competence">
-                  <img src="../img/logo.png" class="logo2">
-                  <p class="desc_competence">competence</p>
-                </div>
-                <div class="competence">
-                  <img src="../img/logo.png" class="logo2">
-                  <p class="desc_competence">competence</p>
-                </div>
-                <div class="competence">
-                  <img src="../img/logo.png" class="logo2">
-                  <p class="desc_competence">competence</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="dimitri.html" download>
-            <button class="Download">Télécharger les fichiers du projet</button>
-          </a>
+<?php
+            
+            // Requête SQL pour récupérer les données
+            $sql = "SELECT * FROM projet where Nom='". $nom ."'";
+            $result = $conn->query($sql);
+            
+            // Vérification des résultats
+            if ($result->num_rows > 0) {
+                // Création d'un tableau HTML avec les données
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='projet' id=". strval($row['ID']) .">";
+                    echo "<h2 class='title_projet'>". $row['Titre'] ."</h2>";
+                    echo "<p class='date_projet'>". $row['Date1'] ."</p>";
+                    echo "<p class='text_description'>". $row['Texte'] ."</p>";
+                    echo "<div class='ContainerCompetence'>
+                            <a href=". $row["Fichier"] ." download><button class='Download'>Télécharger les fichiers du projet</button></a>
+                          </div>";
+                    echo "</div>";
+                            
+                }
+            } 
+            
+            
 
-          <div class="projet2">
-            <h2 class='title_projet'>Projet devops</h2>
-            <p class="date_projet">novembre 2024</p>
-            <p class="description_projet">
-              Nous avons du crée le site dont vous naviger actuellement <br>
-              Connaissances :<br>
-              - Utilisation d'interpreteur (visual studio code) <br>
-              - Apprendre les langage (Html, Css et javascript) <br>
-              - Apprentisage du langage (php et SQL) pour configurée et mettre une base de donnée. <br>
-              - Utilisation de git pour gérer les différente version du site <br>
-              
-              Notre missions:<br>
-              - Crée un cyberfolio avec une interface dinamique<br>
-              - Produire un rapport de devloppement </p>
-          </div>
-        </div>
-    </div>
 
+
+
+
+            
+        echo "</div>";
+    echo "</div>";
+   
+            // Fermeture de la connexion
+            $conn->close();
+?>
+       
    <!-- Texte sur la cohésion d'équipe -->
  
     <!-- Curseur personnalisé -->
