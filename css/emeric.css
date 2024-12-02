@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    width: 100%;
     display: block;
     background-image: url('../img/background_perso_claire.jpg');
     background-size: cover;
@@ -11,6 +12,7 @@ body {
     background-attachment: fixed;
     font-family: monospace;
     overflow-x: hidden;
+
   }
   
   /* Barre de navigation */
@@ -26,6 +28,7 @@ body {
     font-weight: 100;
     height: 50px;
     padding: 1em;
+    width: 100%;
     list-style: none;
   }
   
@@ -197,7 +200,7 @@ body {
 /*partie presentation*/
   .presentation { 
     color: rgb(0, 0, 0);
-    width: 90%;
+    width: 100%;
     margin-left: 5%;
     min-width: 90%;
     text-align: center;
@@ -257,7 +260,6 @@ h2{
   justify-content: flex-start; 
   width: 100%;
   align-items: center;
-  margin-left: 10%;
   margin-right: auto;
   margin-top: 50px;
 }

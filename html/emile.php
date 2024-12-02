@@ -248,7 +248,7 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
     echo "<div class='projetindex'>";
         echo "<h3 class='h3'>Index</h3>";
         echo "<ul>";
-        $sql = "SELECT * FROM projet";
+        $sql = "SELECT * FROM projet where Nom='". $nom ."'";
             $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
             echo "<li><a href='#". strval($row["ID"]) ."'>". $row['Titre'] ."</a></li>";
