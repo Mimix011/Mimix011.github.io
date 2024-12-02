@@ -21,6 +21,32 @@
     </div>
   </nav>
 
+
+  <?php
+        
+        // Informations de connexion à la base de données
+        $host = "localhost"; // Serveur
+        $username = "root";  // Nom d'utilisateur
+        $password = "root";      // Mot de passe
+        $dbname = "cyberfolio"; // Nom de la base de données
+        $nom = "ilyass";
+        
+        // Connexion à la base
+        $conn = new mysqli($host, $username, $password, $dbname);
+        
+        // Vérifiez la connexion
+        if ($conn->connect_error) {
+            die("Échec de la connexion : " . $conn->connect_error);
+        }
+        $conn->set_charset("utfmb4");
+        
+?>
+
+
+
+
+
+
 <body>
   <header class="profile-header">
     
@@ -37,42 +63,58 @@
     </section>
 
     <section class="skills-plan">
-      <h2>Compétences:</h2>
-      <ul>
-        <li>Développement Web (HTML, CSS, JavaScript)</li>
-        <li>Développement Mobile (React Native, Flutter)</li>
-        <li>Gestion de Projets (Agile, Scrum)</li>
-        <li>Design UI/UX</li>
-        <li>Cybersecurity</li>
-      </ul>
-    </section>
 
-    
+
+                                    
+                          <?php
+                                $sql = "SELECT * FROM competence where Nom='". $nom ."'";
+                        $result = $conn->query($sql);
+                        echo "<h2>Compétences:</h2>";
+                        echo "<ul>";
+                        // Vérification des résultats
+                        if ($result->num_rows > 0) {
+                            // Création d'un tableau HTML avec les données
+                            while ($row = $result->fetch_assoc()) {
+                              echo "<li>". $row['Competence'] ."</li>";
+
+                            }
+                            echo "</ul>";
+                        }
+
+
+                                ?>  
       
     </section>
 
     <section class="projects">
       <h2>Projets Réalisés</h2>
       <div class="projects-container">
-      <div class="project">
-        <h3>Projet 1: Pentest</h3>
-        <p>Le projet de pentesting consisté à hacker plusieur compte d'un site à fin d'en relevé les differentes failles et de proposé des solutions. Ce projet a été réalisé dans le cadre d'un apprentissage des différentes techniques de pentesting. Les technologies utilisées incluent: 
-          <li>Uwamp (pour heberger le site en localhost)</li>
-          <li>Docker (pour heberger le site en localhost)</li>
-          <li>Burpsuite (pour intercepter et modifié les requêtes)</li>
-        </p>
-      </div>
-      <div class="project">
-        <h3>Projet 2: Osint</h3>
-        <p>L'Osint a été réalisé d'un apprentissage de technique de recherches. Les technologies utilisées incluent 
-          <li>Yandex</li>
-          <li>Google Earth</li>
-          <li>Whois</li></p>
-      </div>
-      <div class="project">
-        <h3>Projet 3: Projet web</h3>
-        <p>Réalisation d'un site web d'équipe. Ce projet a été réalisé dans le cadre de l'apprentissage du développement Web Full Stack. Les technologies utilisées incluent <li>Git</li><li>Html</li><li>Css</li><li>JavaScript</li><li>Sql</li><li>PHP</li>.</p>
-      </div>
+
+      <?php
+            
+            // Requête SQL pour récupérer les données
+            $sql = "SELECT * FROM projet where Nom='". $nom ."'";
+            $result = $conn->query($sql);
+            
+            // Vérification des résultats
+            if ($result->num_rows > 0) {
+                // Création d'un tableau HTML avec les données
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='project' id=". strval($row['ID']) .">";
+                    echo "<h3 class='title_projet'>". $row['Titre'] ."</h3>";
+                    echo "<p>". $row['Texte'] ."</p>";
+                    echo "</div>";
+                            
+                }
+            } 
+            
+   
+            // Fermeture de la connexion
+            $conn->close();
+?>
+
+
+ 
     </div>
     </section>
   </main>

@@ -45,7 +45,7 @@
                 <li> <a href="../html/emile.php">emile</a></li>
                 <li><a href="../html/jassym.html">Jassym</a></li>
                 <li><a href="../html/dimitri.html">Dimitri</a></li>
-                <li><a href="../html/Ilyas.html">Ilyas</a></li>
+                <li><a href="../html/Ilyass.php">Ilyas</a></li>
               </ul>
           </li>
           <li>
