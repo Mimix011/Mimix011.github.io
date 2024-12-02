@@ -43,7 +43,6 @@ typeEffect();
 document.addEventListener("DOMContentLoaded", function() {
   const progressBar = document.querySelector('.progress_bar');
 
-  // Only proceed if the element exists
   if (progressBar) {
       progressBar.style.display = "none";
 
@@ -55,10 +54,10 @@ document.addEventListener("DOMContentLoaded", function() {
           const windowHeight = window.innerHeight; // taille de l'affichage
           const position = window.pageYOffset; // la position en pixels du document
 
-          const trackLength = height - windowHeight; // taille du site - la partie affichée sur l'écran en ce moment
+          const trackLength = height - windowHeight;
           
           const percentage = 
-                Math.floor((position / trackLength) * 100); // pourcentage du site déjà parcouru
+                Math.floor((position / trackLength) * 100);
           
           progressBar.style.right = (100 - percentage) + '%';
       }
