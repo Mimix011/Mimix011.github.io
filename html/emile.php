@@ -146,7 +146,7 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
                             // Création d'un tableau HTML avec les données
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='competence2'>
-                                        <img src='../img/Emile/". $row['Competence'] .".png' class='logocomp'>
+                                        <img src='". $row['Fichier'] ."' class='logocomp'>
                                     <p class='textcomp'>". $row['Competence'] ."</p></div>";
 
                             }
@@ -310,6 +310,7 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
                             <img src="../img/logo.png" class="logo2">
                             <p class="desc_competence">Autonomie</p>
                         </div>
+                        
                     </div>
                 </div>
             </div>

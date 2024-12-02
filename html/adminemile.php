@@ -9,16 +9,13 @@
 </head>
 <body>
 <?php
-// Début de la session
-session_start();
 
-// Vérification de l'accès
+session_start();
 if (!isset($_SESSION['pseudo'])) {
     header('Location: login.php');
     exit();
 }
 
-// Connexion à la base de données
 $host = "localhost";
 $username = "root";
 $password = "root";
@@ -29,11 +26,171 @@ if ($conn->connect_error) {
     die("Erreur de connexion : " . $conn->connect_error);
 }
 
-// Variables pour stocker les valeurs des formulaires
 $titre = $date = $texte = $competence1 = $competence2 = $competence3 = "";
 $titre2 = $date2 = $texte2 = $competence12 = $competence22 = $competence32 = "";
+?>
 
-// Formulaire "Projet"
+
+
+
+<!-- Modificcation présentation -->
+<?php 
+$sql = "SELECT * FROM autres WHERE Nom = ? AND Titre = ?";
+$stmt = $conn->prepare($sql);
+if (!$stmt) {
+    die("SQL preparation failed: " . $conn->error);
+}
+$pseudo = $_SESSION['pseudo'];
+$titre0 = 'presentation';
+$stmt->bind_param("ss", $pseudo, $titre0);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    echo "<div class='container mt-5'>
+        <h2>Présentation</h2>
+        <form method='POST' enctype='multipart/form-data'>
+            <textarea type='text' name='Texte0' placeholder='Texte' class='form-control'  required>" . htmlspecialchars($row['Texte'], ENT_QUOTES, 'UTF-8') . "</textarea>
+            <button type='submit' name='modifpresentation' class='btn btn-primary mt-2'>Update</button>
+        </form>
+    </div>";
+}
+$stmt->close();
+
+
+?>
+<?php
+if (isset($_POST['modifpresentation'])) {
+    if (!empty($_POST['Texte0'])) {
+        $texte0 = $_POST['Texte0'];
+            $stmt3 = $conn->prepare("UPDATE autres SET Texte=? where Titre='presentation' and Nom='". $_SESSION['pseudo'] ."'");
+            $stmt3->bind_param("s", $texte0);
+            if ($stmt3->execute()) {
+                echo "<p class='text-success'>Modification realiser avec succès !</p>";
+            } else {
+                echo "<p class='text-danger'>Erreur lors de la modification : " . $stmt3->error . "</p>";
+            }
+            $stmt3->close();
+        } else {
+            echo "<p class='text-danger'>Erreur lors du téléchargement du fichier.</p>";
+        }
+    } else {
+        echo "<p class='text-danger'>Veuillez remplir tous les champs et télécharger un fichier.</p>";
+    }
+?>
+
+
+
+<!-- Modification Activiter -->
+<?php
+
+$pseudo = $_SESSION['pseudo'];
+$type = 'activiter';
+$sql = "SELECT * FROM autres WHERE Nom = ? AND type = ?";
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    die("SQL preparation failed: " . $conn->error);
+}
+
+$stmt->bind_param("ss", $pseudo, $type);
+$stmt->execute();
+$result = $stmt->get_result();
+$activities = [];
+while ($row = $result->fetch_assoc()) {
+    $activities[$row['Titre']] = $row['Texte'];
+}
+
+$stmt->close();
+?>
+
+<div class="container mt-5">
+    <h2>Modifier une Activité</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="activiter">Sélectionnez une activité :</label>
+            <select name="activiter" id="activiter" class="form-control" onchange="updateForm()" required>
+                <option value="">--Choisissez l'activité--</option>
+                <?php foreach ($activities as $titre4 => $texte4) : ?>
+                    <option value="<?php echo htmlspecialchars($titre4, ENT_QUOTES, 'UTF-8'); ?>" <?php echo isset($_POST['activiter']) && $_POST['activiter'] == $titre4 ? 'selected' : ''; ?>>
+                        <?php echo htmlspecialchars($titre4, ENT_QUOTES, 'UTF-8'); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="titre">Titre :</label>
+            <input type="text" name="Titre" id="titre" class="form-control" value="<?php echo htmlspecialchars($_POST['activiter'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="texte">Texte :</label>
+            <textarea name="Texte4" id="texte" rows="5" class="form-control" required><?php echo htmlspecialchars($_POST['Texte4'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+        </div>
+        <button type="submit" name="modifpresentation" class="btn btn-primary mt-2">Modifier</button>
+    </form>
+</div>
+
+<script>
+    function updateForm() {
+        const activities = <?php echo json_encode($activities, JSON_HEX_TAG | JSON_HEX_APOS); ?>;
+        const selectedActivity = document.getElementById('activiter').value;
+        document.getElementById('titre').value = selectedActivity || ''; 
+        document.getElementById('texte').value = activities[selectedActivity] || '';
+    }
+    window.onload = function() {
+        updateForm();
+    }
+</script>
+
+<?php
+if (isset($_POST['modifpresentation'])) {
+    $newTitre = $_POST['Titre'] ?? null; 
+    $newTexte = $_POST['Texte4'] ?? null; 
+    $activiter = $_POST['activiter'] ?? null; 
+
+    if ($newTitre && $newTexte && $activiter) {
+        $stmt3 = $conn->prepare("UPDATE autres SET Titre = ?, Texte = ? WHERE Titre = ? AND Nom = ?");
+        if (!$stmt3) {
+            die("SQL preparation failed: " . $conn->error);
+        }
+        $stmt3->bind_param("ssss", $newTitre, $newTexte, $activiter, $pseudo);
+        if ($stmt3->execute()) {
+            echo "<p class='text-success'>Modification réalisée avec succès !</p>";
+        } else {
+            echo "<p class='text-danger'>Erreur lors de la modification : " . $stmt3->error . "</p>";
+        }
+        $stmt3->close();
+    } else {
+        echo "<p class='text-danger'>Veuillez remplir tous les champs.</p>";
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
 if (isset($_POST['envoiprojet'])) {
     if (!empty($_POST['Titre']) && !empty($_POST['Date']) && !empty($_POST['Texte']) &&
         !empty($_POST['Competence1']) && !empty($_POST['Competence2']) && !empty($_POST['Competence3']) && isset($_FILES['file'])) {
@@ -45,7 +202,6 @@ if (isset($_POST['envoiprojet'])) {
         $competence2 = $_POST['Competence2'];
         $competence3 = $_POST['Competence3'];
 
-        // Gestion du fichier
         $uploadDir = 'uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
@@ -56,7 +212,6 @@ if (isset($_POST['envoiprojet'])) {
         $uploadPath = $uploadDir . $fileName;
 
         if (move_uploaded_file($fileTmpPath, $uploadPath)) {
-            // Enregistrement dans la base de données
             $stmt = $conn->prepare("INSERT INTO projet (Titre, Date1, Texte, Competence1, Competence2, Competence3, Fichier, Nom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssssss", $titre, $date, $texte, $competence1, $competence2, $competence3, $uploadPath, $_SESSION['pseudo']);
             if ($stmt->execute()) {
@@ -73,7 +228,6 @@ if (isset($_POST['envoiprojet'])) {
     }
 }
 
-// Formulaire "Expérience Professionnelle"
 if (isset($_POST['envoiexperience'])) {
     if (!empty($_POST['Titre2']) && !empty($_POST['Date2']) && !empty($_POST['Texte2']) &&
         !empty($_POST['Competence12']) && !empty($_POST['Competence22']) && !empty($_POST['Competence32'])) {
@@ -85,7 +239,6 @@ if (isset($_POST['envoiexperience'])) {
         $competence22 = $_POST['Competence22'];
         $competence32 = $_POST['Competence32'];
 
-        // Enregistrement dans la base de données
         $stmt = $conn->prepare("INSERT INTO experience (Titre, Date1, Texte, Competence1, Competence2, Competence3, Nom) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssss", $titre2, $date2, $texte2, $competence12, $competence22, $competence32, $_SESSION['pseudo']);
         if ($stmt->execute()) {
@@ -102,7 +255,16 @@ if (isset($_POST['envoiexperience'])) {
 
 <h1 class="text-center bg-dark text-white p-3">Administrateur - <?php echo strtoupper($_SESSION['pseudo']); ?></h1>
 
-<div class="container mt-5">
+
+
+
+
+
+
+
+
+
+<div class="container mt-5" >
     <h2>Ajouter un Projet</h2>
     <form method="POST" enctype="multipart/form-data">
         <input type="text" name="Titre" placeholder="Titre" class="form-control" value="<?php echo $titre; ?>" required>
@@ -193,12 +355,52 @@ if (isset($_POST['envoiexperience'])) {
 <?php endif; ?>
 
 
-
-
-
-
-
+<div class="container mt-5" >
+    <h2>Ajouter une compétence</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="Titre3" placeholder="Titre" class="form-control" value="<?php echo $titre; ?>" required>
+        <input type="file" name="file3" class="form-control mt-2" required>
+        <button type="submit" name="envoicompetence" class="btn btn-primary mt-2">Envoyer</button>
+    </form>
 </div>
+
+
+
+<?php
+
+
+
+if (isset($_POST['envoicompetence'])) {
+    if (!empty($_POST['Titre3']) &&  isset($_FILES['file3'])) {
+
+        $titre3 = $_POST['Titre3'];
+
+        $uploadDir3 = 'uploads/';
+        if (!is_dir($uploadDir3)) {
+            mkdir($uploadDir3, 0777, true);
+        }
+
+        $fileTmpPath3 = $_FILES['file3']['tmp_name'];
+        $fileName3 = uniqid('file_', true) . '.' . pathinfo($_FILES['file3']['name'], PATHINFO_EXTENSION);
+        $uploadPath3 = $uploadDir3 . $fileName3;
+
+        if (move_uploaded_file($fileTmpPath3, $uploadPath3)) {
+            $stmt3 = $conn->prepare("INSERT INTO competence (Competence, Fichier, nom) VALUES (?, ?, ?)");
+            $stmt3->bind_param("sss", $titre3, $uploadPath3,$_SESSION['pseudo']);
+            if ($stmt3->execute()) {
+                echo "<p class='text-success'>Projet ajouté avec succès !</p>";
+            } else {
+                echo "<p class='text-danger'>Erreur lors de l'ajout du projet : " . $stmt3->error . "</p>";
+            }
+            $stmt3->close();
+        } else {
+            echo "<p class='text-danger'>Erreur lors du téléchargement du fichier.</p>";
+        }
+    } else {
+        echo "<p class='text-danger'>Veuillez remplir tous les champs et télécharger un fichier.</p>";
+    }
+}
+?>
 
 
 
@@ -209,7 +411,7 @@ if (isset($_POST['envoiexperience'])) {
 <style type="text/css">
     h1 {
         width: 100%;
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         margin: 0;
@@ -217,17 +419,18 @@ if (isset($_POST['envoiexperience'])) {
         color: white;
         text-align: center;
         padding: 10px;
-        z-index: 1;
+    }
+    body{
+        margin-top:100px;
     }
     .presentation {
-        margin: 0px;
         font-size: 20px;
         font-weight: bold;
         text-decoration: underline;
     }
     .projet {
         width: 500px;
-        margin-top: 50px;
+
         background-color: rgb(227, 227, 227);
         box-shadow: 0px 0px 10px black;
         margin: 0;
