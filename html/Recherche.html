@@ -37,13 +37,38 @@
         </nav>
 
         <header>
-            <h1 class="titel_l">Recherche:</h1>
+            <h1 class="titel_l">Recherche</h1>
         </header>
         
         <!--barre de recherche-->
         <section>
             <div class ="search-container">
+                
                 <input type="text" class="search-bar" placeholder="Rechercher ...">
+            </div>
+        </section>
+
+        <section class="filtre"> 
+            <div class="row mb-3">
+
+                <div class="col">
+                    <label for="typeFilter" class="form-label">Filtrer par type :</label>
+                    <select id="typeFilter" class="form-select">
+                        <option value="">Tous</option>
+                        <option value="skill">Skills</option>
+                        <option value="certification">Certifications</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="nomFilter" class="form-label">Filtrer par nom :</label>
+                    <input type="text" id="nomFilter" class="search-nom" placeholder="Nom...">
+                </div>
+
+                <div class="col">
+                    <label for="contenuFilter" class="form-label">Filtrer par contenu :</label>
+                    <input type="text" id="contenuFilter" class="search-contenu" placeholder="Contenu...">
+                </div>
             </div>
         </section>
     </body>
