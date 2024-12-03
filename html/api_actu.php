@@ -17,6 +17,9 @@
     //defini l'url de la requête curl
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+    // **Désactive la vérification SSL**
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     // Execute la requête 
     $response = curl_exec($ch);
     // Verification si une erreur et survenue 
