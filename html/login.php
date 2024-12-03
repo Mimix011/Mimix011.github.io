@@ -19,6 +19,12 @@ if(isset($_POST['envoi'])){
 			if ($_POST['pseudo'] === 'dimitri'){
 				header('Location: admindimitri.php');
 				}
+			if ($_POST['pseudo'] === 'emeric'){
+				header('Location: adminemeric.php');
+				}
+				if ($_POST['pseudo'] === 'ilyass'){
+					header('Location: adminilyass.php');
+					}
 
 
 
