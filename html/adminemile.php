@@ -50,7 +50,7 @@ while ($row = $result->fetch_assoc()) {
         <h2>Présentation</h2>
         <form method='POST' enctype='multipart/form-data'>
             <textarea type='text' name='Texte0' placeholder='Texte' class='form-control'  required>" . htmlspecialchars($row['Texte'], ENT_QUOTES, 'UTF-8') . "</textarea>
-            <button type='submit' name='modifpresentation' class='btn btn-primary mt-2'>Update</button>
+            <button type='submit' name='modifpresentation' class='btn btn-primary mt-2'>Modifier</button>
         </form>
     </div>";
 }
@@ -73,9 +73,7 @@ if (isset($_POST['modifpresentation'])) {
         } else {
             echo "<p class='text-danger'>Erreur lors du téléchargement du fichier.</p>";
         }
-    } else {
-        echo "<p class='text-danger'>Veuillez remplir tous les champs et télécharger un fichier.</p>";
-    }
+    } 
 ?>
 
 
@@ -119,13 +117,13 @@ $stmt->close();
         </div>
         <div class="mb-3">
             <label for="titre">Titre :</label>
-            <input type="text" name="Titre" id="titre" class="form-control" value="<?php echo htmlspecialchars($_POST['activiter'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+            <input type="text" name="Titre4" id="titre" class="form-control" value="<?php echo htmlspecialchars($_POST['Titre4'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
         </div>
         <div class="mb-3">
             <label for="texte">Texte :</label>
             <textarea name="Texte4" id="texte" rows="5" class="form-control" required><?php echo htmlspecialchars($_POST['Texte4'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
         </div>
-        <button type="submit" name="modifpresentation" class="btn btn-primary mt-2">Modifier</button>
+        <button type="submit" name="modifactiviter" class="btn btn-primary mt-2">Modifier</button>
     </form>
 </div>
 
@@ -142,8 +140,8 @@ $stmt->close();
 </script>
 
 <?php
-if (isset($_POST['modifpresentation'])) {
-    $newTitre = $_POST['Titre'] ?? null; 
+if (isset($_POST['modifactiviter'])) {
+    $newTitre = $_POST['Titre4'] ?? null; 
     $newTexte = $_POST['Texte4'] ?? null; 
     $activiter = $_POST['activiter'] ?? null; 
 
@@ -189,7 +187,7 @@ if (isset($_POST['modifpresentation'])) {
 
 
 
-
+<!-- Ajouter un projet -->
 <?php
 if (isset($_POST['envoiprojet'])) {
     if (!empty($_POST['Titre']) && !empty($_POST['Date']) && !empty($_POST['Texte']) &&
@@ -254,16 +252,6 @@ if (isset($_POST['envoiexperience'])) {
 ?>
 
 <h1 class="text-center bg-dark text-white p-3">Administrateur - <?php echo strtoupper($_SESSION['pseudo']); ?></h1>
-
-
-
-
-
-
-
-
-
-
 <div class="container mt-5" >
     <h2>Ajouter un Projet</h2>
     <form method="POST" enctype="multipart/form-data">
@@ -315,6 +303,69 @@ if (isset($_POST['envoiexperience'])) {
     <?php endif; ?>
 
 
+
+
+
+
+
+
+
+    <?php
+
+$sql = "SELECT ID, Titre FROM projet where Nom='". $_SESSION['pseudo'] ."'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+    echo '<form method="POST">';
+    echo '<h2 for="projet_select">Sélectionnez un projet à supprimer :</h2>';
+    echo '<select name="projet_id" id="projet_select" class="form-control" onchange="updateForm()" required>';
+    echo '<option value="">-- Choisissez un projet --</option>';
+
+    while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8') . '">' 
+             . htmlspecialchars($row['Titre'], ENT_QUOTES, 'UTF-8') 
+             . '</option>';
+    }
+
+    echo '</select>';
+    echo '<button type="submit" name="deleteprojet" class="btn btn-danger">Supprimer</button>';
+    echo '</form>';
+} else {
+    echo '<p>Aucun projet disponible.</p>';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteprojet']) && isset($_POST['projet_id'])) {
+    $projet_id = intval($_POST['projet_id']);
+
+    $stmt = $conn->prepare("DELETE FROM projet WHERE ID = ?");
+    if ($stmt) {
+        $stmt->bind_param("i", $projet_id);
+        if ($stmt->execute()) {
+            echo '<p class="success">Le projet a été supprimé avec succès.</p>';
+        } else {
+            echo '<p class="error">Erreur lors de la suppression : ' . $stmt->error . '</p>';
+        }
+        $stmt->close();
+    } else {
+        echo '<p class="error">Erreur lors de la préparation de la requête : ' . $conn->error . '</p>';
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h2 class="mt-5">Ajouter une Expérience Professionnelle</h2>
     <form method="POST">
         <input type="text" name="Titre2" placeholder="Titre" class="form-control" value="<?php echo $titre2; ?>" required>
@@ -355,14 +406,74 @@ if (isset($_POST['envoiexperience'])) {
 <?php endif; ?>
 
 
-<div class="container mt-5" >
-    <h2>Ajouter une compétence</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="text" name="Titre3" placeholder="Titre" class="form-control" value="<?php echo $titre; ?>" required>
-        <input type="file" name="file3" class="form-control mt-2" required>
-        <button type="submit" name="envoicompetence" class="btn btn-primary mt-2">Envoyer</button>
-    </form>
-</div>
+<br>
+
+
+
+
+<?php
+
+$sql = "SELECT ID, Titre FROM experience where Nom='". $_SESSION['pseudo'] ."'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+    echo '<form method="POST">';
+    echo '<h2 for="experience_select">Sélectionnez une experience à supprimer :</h2>';
+    echo '<select name="experience_id" id="experience_select" class="form-control" onchange="updateForm()" required>';
+    echo '<option value="">-- Choisissez une expérience --</option>';
+
+    while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8') . '">' 
+             . htmlspecialchars($row['Titre'], ENT_QUOTES, 'UTF-8') 
+             . '</option>';
+    }
+
+    echo '</select>';
+    echo '<button type="submit" name="deleteexperience" class="btn btn-danger">Supprimer</button>';
+    echo '</form>';
+} else {
+    echo '<p>Aucune experience disponible.</p>';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteexperience']) && isset($_POST['experience_id'])) {
+    $experience_id = intval($_POST['experience_id']);
+
+    $stmt = $conn->prepare("DELETE FROM experience WHERE ID = ?");
+    if ($stmt) {
+        $stmt->bind_param("i", $experience_id);
+        if ($stmt->execute()) {
+            echo '<p class="success">L experince a été supprimé avec succès.</p>';
+        } else {
+            echo '<p class="error">Erreur lors de la suppression : ' . $stmt->error . '</p>';
+        }
+        $stmt->close();
+    } else {
+        echo '<p class="error">Erreur lors de la préparation de la requête : ' . $conn->error . '</p>';
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -385,12 +496,12 @@ if (isset($_POST['envoicompetence'])) {
         $uploadPath3 = $uploadDir3 . $fileName3;
 
         if (move_uploaded_file($fileTmpPath3, $uploadPath3)) {
-            $stmt3 = $conn->prepare("INSERT INTO competence (Competence, Fichier, nom) VALUES (?, ?, ?)");
+            $stmt3 = $conn->prepare("INSERT INTO competence (Competence2, Fichier, nom) VALUES (?, ?, ?)");
             $stmt3->bind_param("sss", $titre3, $uploadPath3,$_SESSION['pseudo']);
             if ($stmt3->execute()) {
-                echo "<p class='text-success'>Projet ajouté avec succès !</p>";
+                echo "<p class='text-success'>Compétence ajouté avec succès !</p>";
             } else {
-                echo "<p class='text-danger'>Erreur lors de l'ajout du projet : " . $stmt3->error . "</p>";
+                echo "<p class='text-danger'>Erreur lors de l'ajout de la compétence : " . $stmt3->error . "</p>";
             }
             $stmt3->close();
         } else {
@@ -401,6 +512,73 @@ if (isset($_POST['envoicompetence'])) {
     }
 }
 ?>
+<div class="container mt-5" >
+    <h2>Ajouter une compétence</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="Titre3" placeholder="Titre" class="form-control" value="<?php echo $titre; ?>" required>
+        <input type="file" name="file3" class="form-control mt-2" required>
+        <button type="submit" name="envoicompetence" class="btn btn-primary mt-2">Envoyer</button>
+    </form>
+</div>
+
+
+<br>
+<?php
+
+$sql = "SELECT Competence2 FROM competence where nom='". $_SESSION['pseudo'] ."'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+    echo '<form method="POST">';
+    echo '<h2 for="competence_select">Sélectionnez une compétence à supprimer :</h2>';
+    echo '<select name="competence_id" id="competence_select" class="form-control" onchange="updateForm()" required>';
+    echo '<option value="">-- Choisissez une compétence --</option>';
+
+    while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . htmlspecialchars($row['Competence2'], ENT_QUOTES, 'UTF-8') . '">' 
+             . htmlspecialchars($row['Competence2'], ENT_QUOTES, 'UTF-8') 
+             . '</option>';
+    }
+
+    echo '</select>';
+    echo '<button type="submit" name="deletecompetence" class="btn btn-danger">Supprimer</button>';
+    echo '</form>';
+} else {
+    echo '<p>Aucune compétence disponible.</p>';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletecompetence']) && isset($_POST['competence_id'])) {
+    $competence_id = $_POST['competence_id'];
+
+    $stmt = $conn->prepare("DELETE FROM competence WHERE Competence2 = ?");
+    if ($stmt) {
+        $stmt->bind_param("s", $competence_id);
+        if ($stmt->execute()) {
+            echo '<p class="success">La compétence a été supprimé avec succès.</p>';
+        } else {
+            echo '<p class="error">Erreur lors de la suppression : ' . $stmt->error . '</p>';
+        }
+        $stmt->close();
+    } else {
+        echo '<p class="error">Erreur lors de la préparation de la requête : ' . $conn->error . '</p>';
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
