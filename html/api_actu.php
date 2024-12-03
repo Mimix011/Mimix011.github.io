@@ -1,4 +1,8 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     $apiKey = 'cd88b053002b4479b30f01c64414b87a';
     $topic = 'cybersecurity';
 
@@ -6,24 +10,44 @@
 
     // initialisation de curl
     $ch=curl_init();
+
+    if ($ch === false) {
+        die('Erreur cURL : Impossible d\'initialiser la session cURL');
+    }
     //defini l'url de la requête curl
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     // Execute la requête 
     $response = curl_exec($ch);
     // Verification si une erreur et survenue 
-    if(curl_exec($ch)){
-        echo 'Erreur curl : '.curl_error($ch);
+    if ($response === false) {
+        echo 'Erreur cURL : ' . curl_error($ch);
+        curl_close($ch);
+        exit;
     }
 
-    // Fermer la sesion cURL 
-    curl_setopt($ch, CURLOPT_URL,$url);
 
     //Décoder la réponse JSON
     $data = json_decode($response,true);
+    // Vérifier si le décodage a réussi
+if ($data === null) {
+    echo "Erreur lors du décodage JSON : " . json_last_error_msg() . "<br>";
+    exit;
+}
 
     // Vérifier si nous avons des articles
-    $article = isset($data['article'])? $data['articles']:[];
+    if (isset($data['articles']) && count($data['articles']) > 0) {
+        // Affichage des articles
+        foreach ($data['articles'] as $article) {
+            echo "<h2>" . htmlspecialchars($article['title']) . "</h2>";
+            echo "<p>" . htmlspecialchars($article['description']) . "</p>";
+            echo "<a href='" . htmlspecialchars($article['url']) . "' target='_blank'>Lire l'article complet</a><br><br>";
+        }
+    } else {
+        echo "Aucun article trouvé sur ce sujet.<br>";
+    }
+    // Fermer la sesion cURL 
+    curl_setopt($ch, CURLOPT_URL,$url);
 ?>
 
 
