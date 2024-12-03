@@ -3,10 +3,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    $apiKey = 'cd88b053002b4479b30f01c64414b87a';
-    $topic = 'cybersecurity';
-
-    $url ="https://newsapi.org/v2/everything?q={$topic}&apiKey={$apiKey}";
+    $url ="https://api.cybernews.com/v1/feeds/";
 
     // initialisation de curl
     $ch=curl_init();
