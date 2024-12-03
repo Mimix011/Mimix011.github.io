@@ -17,12 +17,10 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.75;
   filter: brightness(75%);
 }
 
 /* Barre de navigation */
-
 
 .progress_bar {
   height: 10px;
@@ -54,11 +52,10 @@ h2 {
   align-items: center;
   justify-content: space-between;
   background-color: #00BAF0;
-  background: linear-gradient(to left, #45cbf4, #0c0aa8);
+  background: linear-gradient(to left, rgba(69, 203, 244), rgba(13, 10, 168));
   color: #FFF;
   height: 50px;
   padding: 1em;
-  opacity: 60%;
   position: relative;
 }
 
@@ -125,6 +122,44 @@ h2 {
 #menu-toggle:checked + .menu-button-container .menu-button::after {
   margin-top: 0px;
   transform: rotate(-405deg);
+}
+
+
+/*bouton mode claire et sombre dans la bar de nav*/
+.switch{
+  width: 100px;
+  height: 50px;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.switch:after {
+  content: "";
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  background: linear-gradient(180deg,rgb(255, 32, 2),rgb(255, 187, 0));
+  border-radius: 180px ;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s; 
+}
+
+
+.inputswitch{
+  width:0;
+  height:0;
+  visibility: hidden;
+}
+
+input:checked + label:after{
+  left: 50px;
+  transform: translateX(-2%);
+  background:linear-gradient(180deg,rgb(93, 4, 167), rgb(4, 213, 250) );
 }
 
 @media (max-width: 700px) {
@@ -257,7 +292,7 @@ header {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #21daff;
+  color: #ff9721;
 }
 
 .biography p {
@@ -277,7 +312,7 @@ header {
 
 .skill-fill {
   height: 100%;
-  background: linear-gradient(90deg, #21daff, #3b45ff);
+  background: linear-gradient(90deg, #ff2121, #f2ff3b);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -296,7 +331,7 @@ header {
 
 .team-cohesion h2 {
   font-size: 2.5rem;
-  color: #21daff;
+  color: #da8921;
   margin-bottom: 20px;
 }
 
