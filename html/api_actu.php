@@ -5,7 +5,7 @@
     $url ="https://newsapi.org/v2/everything?q={$topic}&apiKey={$apiKey}";
 
     // initialisation de curl
-    $ch=curl_int();
+    $ch=curl_init();
     //defini l'url de la requête curl
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
