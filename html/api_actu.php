@@ -2,8 +2,11 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    $apiKey='INI9zwFEU6GD6T7wbtAtzuBAoQzFl2wW';
+    $topic ='cybersecurity';
 
-    $url ="https://api.cybernews.com/v1/feeds/";
+
+    $url ="https://api.nytimes.com/svc/search/v2/articlesearch.json?q={$topic}&api-key={$apiKey}";
 
     // initialisation de curl
     $ch=curl_init();
