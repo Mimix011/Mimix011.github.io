@@ -3,7 +3,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     $apiKey='INI9zwFEU6GD6T7wbtAtzuBAoQzFl2wW';
-    $topic ='cybersecurity';
+    $topic ='Technology';
 
 
     $url ="https://api.nytimes.com/svc/search/v2/articlesearch.json?q={$topic}&api-key={$apiKey}";
