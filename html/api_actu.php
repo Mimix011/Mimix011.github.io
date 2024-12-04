@@ -42,9 +42,14 @@
     if (isset($data['response']['docs']) && count($data['response']['docs']) > 0) {
         // Affichage des articles
         foreach ($data['response']['docs'] as $article) {
-            echo "<h2>" . htmlspecialchars($article['heading']['main']) . "</h2>";
-            echo "<p>" . htmlspecialchars($article['abstract']) . "</p>";
-            echo "<a href='" . htmlspecialchars($article['web_url']) . "' target='_blank'>Lire l'article complet</a><br><br>";
+            $title = isset($article['headline']['main'])? htmlspecialchars($article['headline']['main']):'Titre non disponible';
+            $abstract = isset($article['abstract']) ? htmlspecialchars($article['abstract']) : 'Résumé non disponible';
+            $urlArticle = isset($article['web_url']) ? htmlspecialchars($article['web_url']) : '#';
+
+
+            echo "<h2>" .$title. "</h2>";
+            echo "<p>" .$abstract. "</p>";
+            echo "<a href='" .$urlArticle. "' target='_blank'>Lire l'article complet</a><br><br>";
         }
     } else {
         echo "Aucun article trouvé sur ce sujet.<br>";
@@ -59,8 +64,8 @@
     <header>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="/css/api.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/api.css">
         <title>Page De actu cyber<title>
     </header>
     <body>
