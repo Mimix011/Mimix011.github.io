@@ -11,7 +11,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['pseudo'])) {
+if ($_SESSION['pseudo'] !== 'ilyass') {
     header('Location: login.php');
     exit();
 }

@@ -175,16 +175,13 @@ while ($row = $result->fetch_assoc()) {
 <section class="events">
     <h2>Événements réalisés</h2>
     <ul>
-        <li>Participation au Hackathon CyberSec 2024</li>
-        <li>Analyse de sécurité pour un site web fictif (OWASP Bricks)</li>
-        <li>Création d'un script Python pour brute force</li>
+
         <?php
-        $sql = "SELECT * FROM autres where Nom='". $nom ."' AND type='evenement'";
+        $sql = "SELECT * FROM competence where Nom='". $nom ."' ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while ($row = $result->fetch_assoc()) {
-    echo "<li>". $row['Texte'] ."<li>";
- $presentation = $row['Texte'];
+    echo "<li>". $row['Competence2'] ."</li>";
 
 }
 }
