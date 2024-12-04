@@ -50,6 +50,25 @@
 </div>
 </header>
 
+<?php
+        
+        // Informations de connexion à la base de données
+        $host = "localhost"; // Serveur
+        $username = "root";  // Nom d'utilisateur
+        $password = "root";      // Mot de passe
+        $dbname = "cyberfolio"; // Nom de la base de données
+        $nom = "jassym";
+        
+        // Connexion à la base
+        $conn = new mysqli($host, $username, $password, $dbname);
+        
+        // Vérifiez la connexion
+        if ($conn->connect_error) {
+            die("Échec de la connexion : " . $conn->connect_error);
+        }
+        $conn->set_charset("utfmb4");
+        
+?>
 <header>
  
  
@@ -65,7 +84,17 @@
         <div class="bio-info">
             
             <h2>Jassym Ferah</h2>
-            <p>Passionné par la cybersécurité, je suis étudiant à Guardia School à Lyon. Mon objectif est de renforcer la sécurité des systèmes et de prévenir les cyberattaques grâce à des solutions innovantes.</p>
+      
+            <?php
+        $sql = "SELECT * FROM autres where Nom='". $nom ."' AND Titre='presentation'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+    echo "<p>". $row['Texte'] ."</p>";
+
+}
+}
+?>
 
             <button id="contact-btn" class="contact-btn">Mes contacts</button>
 
@@ -82,7 +111,6 @@
                 
                 
             </div>
-
 
 <!-- Barre de recherche -->
 
@@ -119,6 +147,17 @@
             <h3>OWASP</h3>
             <p>Exploitation des failles applicatives.</p>
         </div>
+        <?php
+        $sql = "SELECT * FROM autres where Nom='". $nom ."' AND type='activiter'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+    echo "<div class='service'><h3>". $row['Titre'] ."</h3><p>". $row['Texte'] ."</p></div>";
+ $presentation = $row['Texte'];
+
+}
+}
+?>
     </div>
 </section>
 
