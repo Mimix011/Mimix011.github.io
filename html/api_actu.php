@@ -62,15 +62,15 @@
 
         <!-- Vidéo de fond -->
         <video autoplay muted loop id="background-video" hidden>
-            <source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
+            <source src="img/background_index.mp4" type="video/mp4" id="background-d">
             Votre navigateur ne supporte pas les vidéos HTML5.
         </video>
-        
-        <video autoplay muted loop id="background-video1" hidden> 
-        <source src="img/background_clair.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas les vidéos HTML5.
-        </video>
 
+        <video autoplay muted loop id="background-video1" hidden> 
+            <source src="img/background_clair.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+    
         <!-- Barre de navigation -->
         <nav>
             <section class="top-nav">
