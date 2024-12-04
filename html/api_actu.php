@@ -58,53 +58,56 @@
 ?>
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css" id="theme-link">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme-link">
+    <title>Page De Actu Cyber</title>
+</head>
+<body>
 
-        <title>Page De actu cyber</title>
-    </head>
-    <body>
-        <video autoplay muted loop id="background-video">
-            <source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
-            Votre navigateur ne supporte pas les vidéos HTML5.
-        </video>
-        <nav>
-            <section class="top-nav">
-                <input id="menu-toggle" type="checkbox" />
-                <label class="menu-button-container" for="menu-toggle">
-                    <div class="menu-button"></div>
-                </label>
-                <ul class="menu">
-                    <li><a href="../index.html">Accueil</a></li>
-                    <li><a href="html/partenaires.html">Partenaire</a></li>
-                    <li><a href="html/contact.html">Contact</a></li>
-                    <li><a href="/html/Recherche2.php">Recherche</a></li>
-                </ul>
-            <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
-                <img src="img/guardiagif.gif" alt="Logo" class="logo" href="test.html">
-            </a>
-            </section>
-        </nav>
+    <!-- Vidéo de fond -->
+    <video autoplay muted loop id="background-video">
+        <source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
+        Votre navigateur ne supporte pas les vidéos HTML5.
+    </video>
 
-        <h1>Actue Cyber</h1>
-        <div id ="api_data">
-            <?php if (count($articles) > 0): ?>
-                <div class="articles">
-                    <?php foreach ($articles as $article): ?>
-                        <div class="article">
-                            <?php echo "<h2>" .$title. "</h2>";
-                            echo "<p>" .$abstract. "</p>";
-                            echo "<a href='" .$urlArticle. "' target='_blank'>Lire l'article complet</a><br><br>"; 
-                            ?>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php else: ?>
-                <p>Aucun article trouvé sur ce sujet.</p>
-            <?php endif; ?>
-        </div>
-    </body>
+    <!-- Barre de navigation -->
+    <nav>
+        <section class="top-nav">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-button-container" for="menu-toggle">
+                <div class="menu-button"></div>
+            </label>
+            <ul class="menu">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="html/partenaires.html">Partenaire</a></li>
+                <li><a href="html/contact.html">Contact</a></li>
+                <li><a href="/html/Recherche2.php">Recherche</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    <!-- Contenu principal -->
+    <h1>Actu Cyber</h1>
+
+    <!-- Affichage des articles via PHP -->
+    <div id="api_data">
+        <?php if (count($articles) > 0): ?>
+            <div class="articles">
+                <?php foreach ($articles as $article): ?>
+                    <div class="article">
+                        <h2><?php echo htmlspecialchars($article['title']); ?></h2>
+                        <p><?php echo htmlspecialchars($article['description']); ?></p>
+                        <a href="<?php echo htmlspecialchars($article['url']); ?>" target="_blank">Lire l'article complet</a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p>Aucun article trouvé sur ce sujet.</p>
+        <?php endif; ?>
+    </div>
+
+</body>
 </html>
