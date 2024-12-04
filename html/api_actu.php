@@ -93,6 +93,7 @@
             </section>
         </nav>
 
+        
         <h1>Actualiter New York Times</h1>
 
         <div id="api_data">
