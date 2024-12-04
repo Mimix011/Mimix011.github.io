@@ -39,7 +39,7 @@
 }
 
     // Vérifier si nous avons des articles
-    if (isset($data['articles']) && count($data['response']['docs']) > 0) {
+    if (isset($data['response']['docs']) && count($data['response']['docs']) > 0) {
         // Affichage des articles
         foreach ($data['response']['docs'] as $article) {
             echo "<h2>" . htmlspecialchars($article['heading']['main']) . "</h2>";
@@ -50,7 +50,7 @@
         echo "Aucun article trouvé sur ce sujet.<br>";
     }
     // Fermer la sesion cURL 
-    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_close($ch);
 ?>
 
 
