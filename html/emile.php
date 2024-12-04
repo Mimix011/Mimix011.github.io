@@ -10,6 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
 </head>
 <body>
+<section class="top-nav">
+    <input id="menu-toggle" type="checkbox" />
+    <label class="menu-button-container" for="menu-toggle">
+      <div class="menu-button"></div>
+    </label>
+    <ul class="menu">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../html/partenaires.html">Partenaire</a></li>
+      <li><a href="../html/contact.html">Contact</a></li>
+      <li><a href="../html/Recherche.html">Recherche</a></li>
+    </ul>
+  <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
+  <img src="../img/guardiagif.gif" alt="Logo" class="logo" href="test.html">
+</a>
+</section>
 
 <?php
         
@@ -30,6 +45,24 @@
         $conn->set_charset("utfmb4");
         
 ?>
+<?php
+$sql = "SELECT * FROM autres where Nom='". $nom ."' AND Titre='presentation'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+ $presentation = $row['Texte'];
+
+}
+}
+?>
+
+
+
+
+
+
+
+
     <div class="MainContent" id="d1">
         <div class="Profil">
             <div class="FirstProfil">
@@ -75,34 +108,23 @@
         </div>
         <div class="presentationtexte">
             <p class="TextePresentation">
-                Étant un étudiant passionné de cyber et motivé d’apprendre toujours plus, j’ai décidé d'intégrer cette année une école de cybersécurité (Guardia Cybersecurity School) à Lyon. Cette première année dans le bachelor “développeur informatique option cybersécurité” va me permettre d'acquérir des bases solides en culture cyber, Dev SecOps, sécurité ISR (Infrastructure Système & Réseau) et en rétro-ingénierie.
-Pointilleux et coopératif, je recherche activement un stage dans le domaine de la cybersécurité pour une durée de 2 à 4 mois entre MAI et SEPTEMBRE 2025.
+                <?php echo $presentation ?>
             </p>
         </div>
         <div class="activitercontent">
-            <div class="activiter">
-                <img src="../img/Emile/pompier.png" alt="pompier" class="logoact">
-                <p class="titreactiviter">Sapeur-Pompier</p>
-                <p class="texteactiviter">
-                    Après 6 années de formation intence en tant que Jeune Sapeur-Pompier, je suis rentrer Sapeur-Pompier Volontaire au centre de secours de Seyssel en septembre 2023.
-                </p>
-            </div>
-            <div class="activiter">
-                <img src="../img/Emile/pompier.png" alt="pompier" class="logoact">
-                <p class="titreactiviter">Sapeur-Pompier</p>
-                <p class="texteactiviter">
-                    Après 6 années de formation intence en tant que Jeune Sapeur-Pompier, je suis rentrer Sapeur-Pompier Volontaire au centre de secours de Seyssel en septembre 2023.
-                </p>
-            </div>
-            <div class="activiter">
-                <img src="../img/Emile/pompier.png" alt="pompier" class="logoact">
-                <p class="titreactiviter">Sapeur-Pompier</p>
-                <p class="texteactiviter">
-                    Après 6 années de formation intence en tant que Jeune Sapeur-Pompier, je suis rentrer Sapeur-Pompier Volontaire au centre de secours de Seyssel en septembre 2023.
-                </p>
-            </div>
-        </div>
-        
+            <?php
+        $sql = "SELECT * FROM autres where Nom='". $nom ."' AND type='activiter'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+    echo "<div class='activiter'><p class='titreactiviter'>". $row['Titre'] ."</p><p class='texteactiviter'>". $row['Texte'] ."</p></div>";
+ $presentation = $row['Texte'];
+
+}
+}
+?>
+
+    </div>
     </div>
     <div class="SecondContent">
         <div class="attributs">
@@ -112,11 +134,11 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
             </div>
             <div class="attribut">
                 <img src="../img/Emile/pointilleux.png"class="logoatt"></img>
-                <p class="attri">POINTILLEUX</p>
+                <p class="attri">RIGOUREUX</p>
             </div>
             <div class="attribut">
                 <img src="../img/Emile/pointilleux.png"class="logoatt"></img>
-                <p class="attri">POINTILLEUX</p>
+                <p class="attri">PONCTUEL</p>
             </div>
         </div>
         <div class="sousblock">
@@ -131,8 +153,8 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
                             // Création d'un tableau HTML avec les données
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='competence2'>
-                                        <img src='../img/Emile/". $row['Competence'] .".png' class='logocomp'>
-                                    <p class='textcomp'>". $row['Competence'] ."</p></div>";
+                                        <img src='". $row['Fichier'] ."' class='logocomp'>
+                                    <p class='textcomp'>". $row['Competence2'] ."</p></div>";
 
                             }
                         }
@@ -206,7 +228,15 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
 
 
 <?php
-            
+                    $host = "localhost"; // Serveur
+                    $username = "root";  // Nom d'utilisateur
+                    $password = "root";      // Mot de passe
+                    $dbname = "cyberfolio"; // Nom de la base de données
+                    $nom = "emile";
+                    
+                    // Connexion à la base
+                    $conn = new mysqli($host, $username, $password, $dbname);
+                    
             // Requête SQL pour récupérer les données
             $sql = "SELECT * FROM projet where Nom='". $nom ."'";
             $result = $conn->query($sql);
@@ -271,86 +301,69 @@ Pointilleux et coopératif, je recherche activement un stage dans le domaine de 
     </div>
 </div>
 
-<div class="MainContent2" id="d3" >
+
+<div class="MainContent2" id="d3">
     <div class="ProjetContent">
-        <h3 class="h3">Projets</h3>
+        <h3 class="h3">Expériences</h3>
         <div class="projets">
-            <div class="projet" id="Entreprise1">
-                <h2 class='title_projet'>Emploi Saisonnier - Mairie Seyssel (01)</h2>
-                <p class="date_projet">Agent Polyvalent des Services Techniques (JUILLET - SEPTEMBRE 2024)</p>
-                <p class="description_projet">
-                    Agent polyvalent des services techniques est le poste que j'ai occupé de Juillet à Septembre 2024. <br>- Entretien des espaces verts (Débroussailleuse, Arrosage, Tondeuse...)<br>- Nettoyage des rues et routes<br>- Responsable de la propreté des lieux publics<br>- Entretien des équipements mis à la disposition du public</p>
-        
-                <div class="ContainerCompetence">
-                    <div class="competences2">
-                        <div class="competence2">
-                            <img src="../img/logo.png" class="logo2">
-                            <p class="desc_competence">Travail en Equipe</p>
-                        </div>
-                        <div class="competence2">
-                            <img src="../img/logo.png" class="logo2">
-                            <p class="desc_competence">Adaptabilité</p>
-                        </div>
-                        <div class="competence2">
-                            <img src="../img/logo.png" class="logo2">
-                            <p class="desc_competence">Autonomie</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="projet" id="Entreprise2">
-                <h2 class='title_projet'>Emploi Saisonnier - Marché Pernoud (Chêne-en-Semine)</h2>
-                <p class="date_projet">Août 2022</p>
-                <p class="description_projet">
-                    Marché Pernoud est une entreprise local de vente de produits frais où j'ai travaillé en Aoùt 2022. <br>- Logistique et organisation des entrepôts<br>- Gestion des déchets (carton, aliment avarié...)<br>- Préparation à l'export de marchandise<br>- Tri des emballages alimentaires
-                <div class="ContainerCompetence">
-                    <div class="competences2">
-                        <div class="competence2">
-                            <img src="../img/logo.png" class="logo2">
-                            <p class="desc_competence">Organisation</p>
-                        </div>
-                        <div class="competence2">
-                            <img src="../img/logo.png" class="logo2">
-                            <p class="desc_competence">Communication</p>
-                        </div>
-                        <div class="competence2">
-                            <img src="../img/logo.png" class="logo2">
-                            <p class="desc_competence">Motivation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="projet" id="Entreprise3">
-                <h2 class='title_projet'>Stage de Découverte - Sequentiel (Chavanod)</h2>
-                <p class="date_projet">Développeur WEB - Janvier 2021</p>
-                <p class="description_projet">
-                    En Janvier 2021, j'ai effectué un stage découverte de 3ème à Sequentiel, une agence de création de site web et d'application à Chavanod (74). <br> - Découverte de la programmation (HTML,CSS,JS...)<br>- Premier pas dans le monde professionnel<br>- Aperçu de la conception d'un site web et d'une application (chef de projet, développeurs, graphiste)<br>- Découverte de la cybersécurité
-            </div>
+            <?php
+                // Sanitize user input to prevent SQL injection
+                $host = "localhost"; // Serveur
+                $username = "root";  // Nom d'utilisateur
+                $password = "root";      // Mot de passe
+                $dbname = "cyberfolio"; // Nom de la base de données
+                $nom = "emile";
+                
+                // Connexion à la base
+                $conn = new mysqli($host, $username, $password, $dbname);
+                
+                // Requête SQL pour récupérer les données
+                $sql = "SELECT * FROM experience WHERE Nom='" . $nom . "'";
+                $result = $conn->query($sql);
+                
+                // Vérification des résultats
+                if ($result->num_rows > 0) {
+                    // Création d'un tableau HTML avec les données
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<div class='projet' id='" . strval($row['ID']) . "'>";
+                        echo "<h2 class='title_projet'>" . $row['Titre'] . "</h2>";
+                        echo "<p class='date_projet'>" . $row['Date1'] . "</p>";
+                        echo "<p class='text_description'>" . $row['Texte'] . "</p>";
+                        echo "</div>";
+                    }
+                }
+            ?>
         </div>
     </div>
+
     <div class="projetindex">
         <h3 class="h3">Index</h3>
         <ul>
-            <li><a href="emile2.html#Entreprise1">Agent Polyvalent</a></li>
-            <li><a href="emile2.html#Entreprise2">Logisticien</a></li>
-            <li><a href="emile2.html#Entreprise3">Stage</a></li>
+            <?php
+                // Requête SQL pour récupérer les données de l'index
+                $sql = "SELECT * FROM experience WHERE Nom='" . $nom . "'";
+                $result = $conn->query($sql);
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li><a href='#" . strval($row["ID"]) . "'>" . $row['Titre'] . "</a></li>";
+                }
+                // Fermeture de la connexion
+                $conn->close();
+            ?>
         </ul>
-        <div class="navbar2">
-            <div class="FirstLink2">
-                <button class="button" id="togg7"><h1>Profil</h1></button> 
-            </div>
-            <div class="SecondLink2">
-                <button class="button" id="togg8"><h1>Portfolio</h1></button>
-            </div>
-            <div class="ThirdLink2">
-                <button class="button" id="togg9"><h1>Experience</h1></button>
-            </div>
+    </div>
+
+    <div class="navbar2">
+        <div class="FirstLink2">
+            <button class="button" id="togg7"><h1>Profil</h1></button>
+        </div>
+        <div class="SecondLink2">
+            <button class="button" id="togg8"><h1>Portfolio</h1></button>
+        </div>
+        <div class="ThirdLink2">
+            <button class="button" id="togg9"><h1>Experience</h1></button>
         </div>
     </div>
-    
- </div>
- 
-
+</div>
 
 
 

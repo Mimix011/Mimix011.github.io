@@ -33,7 +33,7 @@
         $username = "root";  // Nom d'utilisateur
         $password = "root";      // Mot de passe
         $dbname = "cyberfolio"; // Nom de la base de données
-        $nom = "emeric";
+        $nom = "dimitri";
         
         // Connexion à la base
         $conn = new mysqli($host, $username, $password, $dbname);
@@ -312,6 +312,7 @@ while ($row = $result->fetch_assoc()) {
                 $password = "root";      // Mot de passe
                 $dbname = "cyberfolio"; // Nom de la base de données
 
+                
                 // Connexion à la base
                 $conn = new mysqli($host, $username, $password, $dbname);
                 
@@ -349,7 +350,7 @@ while ($row = $result->fetch_assoc()) {
             ?>
         </ul>
 
-    <div class="navbar2">
+
         <div class="FirstLink2">
             <button class="button" id="togg7"><h1>Profil</h1></button>
         </div>
@@ -360,7 +361,8 @@ while ($row = $result->fetch_assoc()) {
             <button class="button" id="togg9"><h1>Experience</h1></button>
         </div>
     </div>
-</div>
+
+
 
 
 

@@ -13,7 +13,19 @@ if(isset($_POST['envoi'])){
 			$_SESSION['pseudo'] = $pseudo;
 			$_SESSION['mdp'] = $mdp;
 			$_SESSION['id'] = $recupUser->fetch()['id'];
-			header('Location: admin2.php');
+			if ($_POST['pseudo'] === 'emile'){
+			header('Location: adminemile.php');
+			}
+			if ($_POST['pseudo'] === 'dimitri'){
+				header('Location: admindimitri.php');
+				}
+			if ($_POST['pseudo'] === 'emeric'){
+				header('Location: adminemeric.php');
+				}
+				if ($_POST['pseudo'] === 'ilyass'){
+					header('Location: adminilyass.php');
+					}
+
 
 
 		}else{
