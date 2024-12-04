@@ -46,10 +46,6 @@
             $abstract = isset($article['abstract']) ? htmlspecialchars($article['abstract']) : 'Résumé non disponible';
             $urlArticle = isset($article['web_url']) ? htmlspecialchars($article['web_url']) : '#';
 
-
-            echo "<h2>" .$title. "</h2>";
-            echo "<p>" .$abstract. "</p>";
-            echo "<a href='" .$urlArticle. "' target='_blank'>Lire l'article complet</a><br><br>";
         }
     } else {
         echo "Aucun article trouvé sur ce sujet.<br>";
@@ -96,7 +92,10 @@
                 <div class="articles">
                     <?php foreach ($articles as $article): ?>
                         <div class="article">
-                            
+                            <?php echo "<h2>" .$title. "</h2>";
+                            echo "<p>" .$abstract. "</p>";
+                            echo "<a href='" .$urlArticle. "' target='_blank'>Lire l'article complet</a><br><br>"; 
+                            ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
