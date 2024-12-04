@@ -33,18 +33,18 @@
     //Décoder la réponse JSON
     $data = json_decode($response,true);
     // Vérifier si le décodage a réussi
-if ($data === null) {
+    if ($data === null) {
     echo "Erreur lors du décodage JSON : " . json_last_error_msg() . "<br>";
     exit;
 }
 
     // Vérifier si nous avons des articles
-    if (isset($data['articles']) && count($data['articles']) > 0) {
+    if (isset($data['articles']) && count($data['response']['docs']) > 0) {
         // Affichage des articles
-        foreach ($data['articles'] as $article) {
-            echo "<h2>" . htmlspecialchars($article['title']) . "</h2>";
-            echo "<p>" . htmlspecialchars($article['description']) . "</p>";
-            echo "<a href='" . htmlspecialchars($article['url']) . "' target='_blank'>Lire l'article complet</a><br><br>";
+        foreach ($data['response']['docs'] as $article) {
+            echo "<h2>" . htmlspecialchars($article['heading']['main']) . "</h2>";
+            echo "<p>" . htmlspecialchars($article['abstract']) . "</p>";
+            echo "<a href='" . htmlspecialchars($article['web_url']) . "' target='_blank'>Lire l'article complet</a><br><br>";
         }
     } else {
         echo "Aucun article trouvé sur ce sujet.<br>";
