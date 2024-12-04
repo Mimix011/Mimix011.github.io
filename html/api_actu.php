@@ -79,7 +79,7 @@
                 <li><a href="/html/Recherche2.php">Recherche</a></li>
             </ul>
             <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
-                <img src="img/guardiagif.gif" alt="Logo" class="logo">
+                <img src="../img/guardiagif.gif" alt="Logo" class="logo">
             </a>
             <input class="inputswitch" type="checkbox" id="darkmode-toggle">
             <label class="switch" for="darkmode-toggle"></label>

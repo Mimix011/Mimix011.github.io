@@ -13,6 +13,10 @@ h1 {
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: auto;
+    justify-content: center;
+
 }
 
 .article h2 {
@@ -29,7 +33,7 @@ h1 {
 .article a {
     display: inline-block;
     margin-top: 10px;
-    color: #0073e6;
+    color: #bd7b26;
     text-decoration: none;
 }
 
