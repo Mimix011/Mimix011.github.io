@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    color: #0073e6;
+    color: #e6a55a;
 }
 
 .articles {
@@ -8,7 +8,7 @@ h1 {
 }
 
 .article {
-    background-color: #242020;
+    background-color: #24202033;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -20,13 +20,13 @@ h1 {
 }
 
 .article h2 {
-    color: #333;
+    color: #db821c;
     font-size: 1.5em;
 }
 
 .article p {
     font-size: 1em;
-    color: #555;
+    color: #dddddd;
     margin: 10px 0;
 }
 
