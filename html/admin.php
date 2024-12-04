@@ -11,8 +11,9 @@ require_once(__DIR__ . '/functions.php');
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Site de recettes - Page d'accueil</title>
-		<link
-				href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href = "css/style.css">
+		<link rel="styltsheet" href="css/api.css">
 	</head>
 	<video autoplay muted loop id="background-video">
 		<source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
