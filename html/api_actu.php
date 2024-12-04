@@ -110,6 +110,6 @@
                 <p>Aucun article trouvé sur ce sujet.</p>
             <?php endif; ?>
         </div>
-        <script src="../js/script.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
