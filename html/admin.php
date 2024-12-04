@@ -13,10 +13,7 @@ require_once(__DIR__ . '/functions.php');
 		<title>Site de recettes - Page d'accueil</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	</head>
-	<video autoplay muted loop id="background-video">
-		<source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
-		Votre navigateur ne supporte pas les vidéos HTML5.
-	</video>
+	
 	<body class="d-flex flex-column min-vh-100">
 		<div class="container">
 			<!-- inclusion de l'entête du site -->

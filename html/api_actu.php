@@ -61,13 +61,13 @@
 
 <!DOCTYPE html>
 <html>
-    <header>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/style.css" id="theme-link">
 
         <title>Page De actu cyber<title>
-    </header>
+    </head>
     <body>
         <video autoplay muted loop id="background-video">
             <source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
@@ -108,3 +108,4 @@
             <?php endif; ?>
         </div>
     </body>
+</html>
