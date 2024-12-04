@@ -51,60 +51,65 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css" id="theme-link">
-    <link rel="stylesheet" href="../css/api.css">
-    <title>Page De Actu Cyber</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css" id="theme-link">
+        <link rel="stylesheet" href="../css/api.css">
+        <title>Page De Actualiter</title>
+    </head>
+    <body>
 
-    <!-- Vidéo de fond -->
-    <video autoplay muted loop id="background-video">
-        <source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
+        <!-- Vidéo de fond -->
+        <video autoplay muted loop id="background-video" hidden>
+            <source class="video_sombre" src="../img/background_index.mp4" type="video/mp4" id="video_d">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+        
+        <video autoplay muted loop id="background-video1" hidden> 
+        <source src="img/background_clair.mp4" type="video/mp4">
         Votre navigateur ne supporte pas les vidéos HTML5.
-    </video>
+        </video>
 
-    <!-- Barre de navigation -->
-    <nav>
-        <section class="top-nav">
-            <input id="menu-toggle" type="checkbox" />
-            <label class="menu-button-container" for="menu-toggle">
-                <div class="menu-button"></div>
-            </label>
-            <ul class="menu">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="html/partenaires.html">Partenaire</a></li>
-                <li><a href="html/contact.html">Contact</a></li>
-                <li><a href="/html/Recherche2.php">Recherche</a></li>
-            </ul>
-            <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
-                <img src="../img/guardiagif.gif" alt="Logo" class="logo">
-            </a>
-            <input class="inputswitch" type="checkbox" id="darkmode-toggle">
-            <label class="switch" for="darkmode-toggle"></label>
-            <div class="backswitch"></div>
-        </section>
-    </nav>
+        <!-- Barre de navigation -->
+        <nav>
+            <section class="top-nav">
+                <input id="menu-toggle" type="checkbox" />
+                <label class="menu-button-container" for="menu-toggle">
+                    <div class="menu-button"></div>
+                </label>
+                <ul class="menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="html/partenaires.html">Partenaire</a></li>
+                    <li><a href="html/contact.html">Contact</a></li>
+                    <li><a href="/html/Recherche2.php">Recherche</a></li>
+                </ul>
+                <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
+                    <img src="../img/guardiagif.gif" alt="Logo" class="logo">
+                </a>
+                <input class="inputswitch" type="checkbox" id="darkmode-toggle">
+                <label class="switch" for="darkmode-toggle"></label>
+                <div class="backswitch"></div>
+            </section>
+        </nav>
 
-    <h1>Actu Cyber</h1>
+        <h1>Actualiter New York Times</h1>
 
-    <div id="api_data">
-        <?php if (count($articles) > 0): ?>
-            <div class="articles">
-                <?php foreach ($articles as $article): ?>
-                    <div class="article">
-                        <h2><?php echo htmlspecialchars($article['headline']['main']); ?></h2>
-                        <p><?php echo htmlspecialchars($article['abstract']); ?></p>
-                        <a href="<?php echo htmlspecialchars($article['web_url']); ?>" target="_blank">Lire l'article complet</a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php else: ?>
-            <p>Aucun article trouvé sur ce sujet.</p>
-        <?php endif; ?>
-    </div>
-
-</body>
+        <div id="api_data">
+            <?php if (count($articles) > 0): ?>
+                <div class="articles">
+                    <?php foreach ($articles as $article): ?>
+                        <div class="article">
+                            <h2><?php echo htmlspecialchars($article['headline']['main']); ?></h2>
+                            <p><?php echo htmlspecialchars($article['abstract']); ?></p>
+                            <a href="<?php echo htmlspecialchars($article['web_url']); ?>" target="_blank">Lire l'article complet</a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>Aucun article trouvé sur ce sujet.</p>
+            <?php endif; ?>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
 </html>
