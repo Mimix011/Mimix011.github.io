@@ -303,7 +303,7 @@ while ($row = $result->fetch_assoc()) {
 
 <div class="MainContent2" id="d3">
     <div class="ProjetContent">
-        <h3 class="h3">Experience</h3>
+        <h3 class="h3">Expériences</h3>
         <div class="projets">
             <?php
                 // Sanitize user input to prevent SQL injection
@@ -348,7 +348,7 @@ while ($row = $result->fetch_assoc()) {
                 $conn->close();
             ?>
         </ul>
-    </div>
+
 
     <div class="navbar2">
         <div class="FirstLink2">
