@@ -135,18 +135,7 @@ while ($row = $result->fetch_assoc()) {
 <section class="what-i-do">
     <h2>Ce que je fais</h2>
     <div class="services">
-        <div class="service">
-            <h3>Pentest</h3>
-            <p>Analyse des vulnérabilités des systèmes.</p>
-        </div>
-        <div class="service">
-            <h3>Script Python</h3>
-            <p>Automatisation des processus de sécurité.</p>
-        </div>
-        <div class="service">
-            <h3>OWASP</h3>
-            <p>Exploitation des failles applicatives.</p>
-        </div>
+
         <?php
         $sql = "SELECT * FROM autres where Nom='". $nom ."' AND type='activiter'";
 $result = $conn->query($sql);
@@ -189,7 +178,19 @@ while ($row = $result->fetch_assoc()) {
         <li>Participation au Hackathon CyberSec 2024</li>
         <li>Analyse de sécurité pour un site web fictif (OWASP Bricks)</li>
         <li>Création d'un script Python pour brute force</li>
+        <?php
+        $sql = "SELECT * FROM autres where Nom='". $nom ."' AND type='evenement'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+    echo "<li>". $row['Texte'] ."<li>";
+ $presentation = $row['Texte'];
+
+}
+}
+?>
     </ul>
+
 </section>
 
 <section class="employer-reviews">
