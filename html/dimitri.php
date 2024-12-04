@@ -6,10 +6,14 @@
   <title>Portfolio de Chameau Emile</title>
   <!-- Lien vers la police Silkscreen de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/emile.css">
+  <link rel="stylesheet" href="../css/dimitri.css">
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
 </head>
 <body>
+<video autoplay muted loop id="background-video">
+    <source src="../img/back.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas les vidéos HTML5.
+  </video>
 <section class="top-nav">
     <input id="menu-toggle" type="checkbox" />
     <label class="menu-button-container" for="menu-toggle">
@@ -57,17 +61,11 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 
-
-
-
-
-
-
     <div class="MainContent" id="d1">
         <div class="Profil">
             <div class="FirstProfil">
-                <img class="photodeprofil" src="../img/Image2.jpg"></img>
-                <h2>Emile CHAMEAU</h2>
+                <img class="photodeprofil" src="../img/Image5.png"></img>
+                <h2>Dimitri BACOT</h2>
             </div>
             <div class="SecondProfil">
                 <p class="Contacts">CONTACTS</p>
@@ -75,28 +73,28 @@ while ($row = $result->fetch_assoc()) {
                     <img class="logocontact"src="../img/Emile/email.png"></img>
                     <div class="texts">
                         <p class="textecontact">MAIL</p>
-                        <p class="textecontact2">emchameau@guardiaschool.fr</p>
+                        <p class="textecontact2">dbacot@guardiaschool.fr</p>
                     </div>
                 </div>
                 <div class="Contact">
                     <img class="logocontact" src="../img/Emile/tel.png"></img>
                     <div class="texts">
                         <p class="textecontact">TELEPHONE</p>
-                        <p class="textecontact2">07 69 72 01 88</p>
+                        <p class="textecontact2">07 50 57 59 87</p>
                     </div>
                 </div>
                 <div class="Contact">
                     <img class="logocontact" src="../img/Emile/linkedin1.png"></img>
                     <div class="texts">
                         <p class="textecontact">LINKEDIN</p>
-                        <p class="textecontact2">Emile CHAMEAU</p>
+                        <a class="textecontact2" href="https://linkedin.com/in/dimitri-bacot">Mon linkedin</a>
                     </div>
                 </div>
                 <div class="Contact">
                     <img class="logocontact" src="../img/Emile/gps.png"></img>
                     <div class="texts">
                         <p class="textecontact">LOCALISATION</p>
-                        <p class="textecontact2">Lyon</p>
+                        <p class="textecontact2">Macon</p>
                     </div>
                 </div>
             </div>
