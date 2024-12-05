@@ -234,13 +234,12 @@ contact-form button:hover {
   align-items: center;
   justify-content: space-between;
   background-color: #00BAF0;
-  background-color:#47b2dd;
+  background: linear-gradient(to left, #45cbf4, #0c0aa8);
   color: #FFF;
   height: 50px;
   padding: 1em;
-  opacity: 100%;
+  opacity: 60%;
   position: relative;
-  font-family: 'Silkscreen', sans-serif;
 }
 .logo {
   position: absolute;
