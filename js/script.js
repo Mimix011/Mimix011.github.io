@@ -68,23 +68,23 @@ function style_mode() {
   if(localStorage.getItem('darkMode') === 'enabled') {
     darkModeToggle.checked = true;
     themeVideo.removeAttribute("hidden");
-    themeLink.href = '/css/style.css';
+    themeLink.href = 'css/style.css';
   } 
   else {
     darkModeToggle.checked = false;
     themeVideo1.removeAttribute("hidden");
-    themeLink.href = '/css/style_clair.css';
+    themeLink.href = 'css/style_clair.css';
   }
 
 
   // Écoute les changements sur le checkbox (quand l'utilisateur change le mode)
   darkModeToggle.addEventListener('change', () => {
     if (darkModeToggle.checked) {
-      themeLink.href = '/css/style.css';
+      themeLink.href = 'css/style.css';
       localStorage.setItem('darkMode', 'enabled');
     } else {
       // Si l'utilisateur désactive le mode sombre (mode clair)
-      themeLink.href = '/css/style_clair.css'; 
+      themeLink.href = 'css/style_clair.css'; 
       localStorage.setItem('darkMode', 'disabled'); 
     }
     toggleVideoVisibility();
