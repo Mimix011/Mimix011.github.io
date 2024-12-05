@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio de Chameau Emile</title>
+  <title>Portfolio de Goris Emeric</title>
   <!-- Lien vers la police Silkscreen de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/emile.css">
@@ -66,8 +66,8 @@ while ($row = $result->fetch_assoc()) {
     <div class="MainContent" id="d1">
         <div class="Profil">
             <div class="FirstProfil">
-                <img class="photodeprofil" src="../img/Image2.jpg"></img>
-                <h2>Emile CHAMEAU</h2>
+                <img class="photodeprofil" src="../img/Image4.jpg"></img>
+                <h2>Emeric GORIS</h2>
             </div>
             <div class="SecondProfil">
                 <p class="Contacts">CONTACTS</p>
@@ -75,21 +75,15 @@ while ($row = $result->fetch_assoc()) {
                     <img class="logocontact"src="../img/Emile/email.png"></img>
                     <div class="texts">
                         <p class="textecontact">MAIL</p>
-                        <p class="textecontact2">emchameau@guardiaschool.fr</p>
+                        <p class="textecontact2">egrois@guardiaschool.fr</p>
                     </div>
                 </div>
-                <div class="Contact">
-                    <img class="logocontact" src="../img/Emile/tel.png"></img>
-                    <div class="texts">
-                        <p class="textecontact">TELEPHONE</p>
-                        <p class="textecontact2">07 69 72 01 88</p>
-                    </div>
-                </div>
+
                 <div class="Contact">
                     <img class="logocontact" src="../img/Emile/linkedin1.png"></img>
                     <div class="texts">
                         <p class="textecontact">LINKEDIN</p>
-                        <p class="textecontact2">Emile CHAMEAU</p>
+                        <p class="textecontact2">Emeric GORIS</p>
                     </div>
                 </div>
                 <div class="Contact">
