@@ -127,7 +127,7 @@ h2 {
 /*bouton mode claire et sombre dans la bar de nav*/
 .switch{
   display: flex;
-  position: fixed;
+  position: absolute;
   right: 150px;
   width: 100px;
   height: 50px;
