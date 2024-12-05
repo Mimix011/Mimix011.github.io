@@ -78,13 +78,14 @@ if (isset($_GET['type']) || isset($_GET['nom']) || isset($_GET['contenu'])) {
       <div class="menu-button"></div>
     </label>
     <ul class="menu">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="html/partenaires.html">Partenaire</a></li>
-      <li><a href="html/contact.html">Contact</a></li>
-      <li><a href="recherche.php">Recherche</a></li>
+    <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../html/partenaires.html">Partenaire</a></li>
+      <li><a href="../html/contact.html">Contact</a></li>
+      <li><a href="../php/recherche.php">Recherche</a></li>
+      <li><a href="../html/api_actu.php">Actualité</a></li>
     </ul>
   <a href="https://guardia.school/campus/lyon.html?utm_term=&utm_campaign=PMX+GU+-+Etudiants&utm_source=adwords&utm_medium=ppc&hsa_acc=1749547295&hsa_cam=20907422767&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA0fu5BhDQARIsAMXUBOLF5lQxduMnrC_3qKBJVAWHTUJK-DNhqhYN9tiGD5igEzrigsmo3pAaAjjzEALw_wcB">
-  <img src="img/guardiagif.gif" alt="Logo" class="logo" href="test.html">
+  <img src="../img/guardiagif.gif" alt="Logo" class="logo" href="test.html">
 </a>
 </section>
 
@@ -99,7 +100,7 @@ if (isset($_GET['type']) || isset($_GET['nom']) || isset($_GET['contenu'])) {
 
  <!-- Vidéo en arrière-plan -->
  <video autoplay muted loop id="background-video">
-    <source src="img/background_index.mp4" type="video/mp4">
+    <source src="../img/background_index.mp4" type="video/mp4">
     Votre navigateur ne supporte pas les vidéos HTML5.
   </video>
 
