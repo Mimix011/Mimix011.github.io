@@ -264,12 +264,6 @@ while ($row = $result->fetch_assoc()) {
             } 
             
             
-
-
-
-
-
-            
         echo "</div>";
     echo "</div>";
     echo "<div class='projetindex'>";
