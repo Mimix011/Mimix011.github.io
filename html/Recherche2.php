@@ -39,13 +39,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche</title>
-    <link rel="stylesheet" href="/css/recherch_page.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/recherch_page.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="recherche">
     <video autoplay muted loop id="background-video">
-        <source src="/img/background_index.mp4" type="video/mp4">
+        <source src="img/background_index.mp4" type="video/mp4">
         Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
@@ -60,7 +60,7 @@
                 <div class="menu-button"></div>
             </label>
             <ul class="menu">
-                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="html/partenaires.html">Partenaire</a></li>
                 <li><a href="html/contact.html">Contact</a></li>
             </ul>

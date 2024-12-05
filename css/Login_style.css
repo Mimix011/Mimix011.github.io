@@ -53,7 +53,7 @@
     }
 
     /* Styling for individual spans */
-    section span {
+    span {
       position: relative;
       display: block;
       width: calc(6.25vw - 2px);
@@ -63,7 +63,7 @@
       transition: 1.5s;
     }
 
-    section span:hover {
+    span:hover {
       background: rgb(105, 215, 215);
       transition: 0s;
     }
@@ -108,6 +108,7 @@
     .signin .content .form .inputBox {
       position: relative;
       width: 100%;
+      padding: 4%;
     }
 
     .signin .content .form .inputBox input {
@@ -173,14 +174,14 @@
 
     /* Media queries for responsive design */
     @media (max-width: 900px) {
-      section span {
+      body span {
         width: calc(10vw - 2px);
         height: calc(10vw - 2px);
       }
     }
 
     @media (max-width: 600px) {
-      section span {
+      body span {
         width: calc(20vw - 2px);
         height: calc(20vw - 2px);
       }

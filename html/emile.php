@@ -350,7 +350,7 @@ while ($row = $result->fetch_assoc()) {
                 $conn->close();
             ?>
         </ul>
-    </div>
+
 
     <div class="navbar2">
         <div class="FirstLink2">
