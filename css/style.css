@@ -126,9 +126,10 @@ h2 {
 
 /*bouton mode claire et sombre dans la bar de nav*/
 .switch{
+  display: flex;
+  position: relative;
   width: 100px;
   height: 50px;
-  position: relative;
   border-radius: 50px;
   box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -136,10 +137,11 @@ h2 {
 }
 
 .switch:after {
+  display: flex;
+  position: relative;
   content: "";
   width: 45px;
   height: 45px;
-  position: absolute;
   top: 3px;
   left: 4px;
   background: linear-gradient(180deg,rgb(255, 32, 2),rgb(255, 187, 0));
@@ -162,6 +164,12 @@ input:checked + label:after{
 }
 
 @media (max-width: 700px) {
+
+  body{
+    justify-content: center;
+    overflow-x: hidden;
+    width: 100%;
+  }
   .menu-button-container {
     display: flex;
   }
@@ -201,7 +209,35 @@ input:checked + label:after{
   .menu > li:not(:last-child) {
     border-bottom: 1px solid #9e0000;
   }
+  
+  .switch{
+    position: relative;
+    padding: auto;
+    border-radius: 50px;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  
+  .bio-and-skills {
+    position:relative;
+    flex-direction: column; /* Déjà présent */
+    justify-content: center; /* Centre verticalement */
+  }
+
+
+
+  .alternance-section .grid {
+    flex-direction: column; /* Organiser les cartes en colonne */
+    align-items: center;
+  }
+  
+  .logo {
+    margin-left: 10px
+  }
 }
+
 
 header {
   text-align: center;
@@ -269,9 +305,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 50px auto;
-  padding: 40px;
-  width: 80%;
+  margin: auto;
+  padding: 0px;
+  width: 50% auto ;
   max-width: 1300px;
   gap: 30px;
   background: rgba(0, 0, 0, 0.5);
@@ -307,6 +343,7 @@ header {
   overflow: hidden;
   height: 20px;
   margin-top: 15px;
+  margin: auto;
 }
 
 .skill-fill {
@@ -469,11 +506,11 @@ header {
   width:150px;
   height:150px;
 }
+
 .logo {
-  position: absolute;
-  top: 50%;
-  right: 20px;
+  position: relative;
+  top: 40px;
+  left: 860px; 
   transform: translateY(-50%);
   height: 70px; /* Ajuste la taille du logo si nécessaire */
-  width: auto;
 }
