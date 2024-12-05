@@ -151,8 +151,18 @@ header p {
 }
 
 /* COMPÉTENCES */
+
+
+
+
+
 .skills {
   padding: 40px 20px;
+  width: 1000px;
+  margin: 0 auto; /* Centre horizontalement */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les éléments à l'intérieur de la section */
 }
 
 .skills h2 {
@@ -162,6 +172,8 @@ header p {
 
 .skills .skill {
   margin-bottom: 20px;
+  width: 100%; /* Assure que chaque barre prend toute la largeur disponible de .skills */
+  max-width: 600px; /* Limite la largeur maximale des barres */
 }
 
 .skills .skill span {
@@ -174,17 +186,157 @@ header p {
   border-radius: 5px;
   overflow: hidden;
   height: 10px;
+  width: 100%; /* La barre occupe toute la largeur disponible */
 }
 
 .skills .progress-bar div {
   height: 10px;
   background-color: #1f8b19;
+  width: 0%; /* Initialement, la largeur commence à 0% */
+  animation: fill-bar 2s infinite alternate; /* Ajout de l'animation */
 }
+
+/* Animations personnalisées pour chaque barre */
+@keyframes fill-bar-1 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 30%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fill-bar-2 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 85%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fill-bar-3 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 90%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fill-bar-4 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fill-bar-5 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 80%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fill-bar-6 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fill-bar-7 {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%; /* Ajuste ici pour un pourcentage spécifique */
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Classes spécifiques pour chaque barre de progression */
+.skill-1 .progress-bar div {
+  animation: fill-bar-1 10s infinite alternate;
+}
+
+.skill-2 .progress-bar div {
+  animation: fill-bar-2 10s infinite alternate;
+}
+
+.skill-3 .progress-bar div {
+  animation: fill-bar-3 10s infinite alternate;
+}
+
+.skill-4 .progress-bar div {
+  animation: fill-bar-4 10s infinite alternate;
+}
+
+.skill-5 .progress-bar div {
+  animation: fill-bar-5 10s infinite alternate;
+}
+
+.skill-6 .progress-bar div {
+  animation: fill-bar-6 10s infinite alternate;
+}
+
+.skill-7 .progress-bar div {
+  animation: fill-bar-7 10s infinite alternate;
+}
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
 
 /* ÉVÉNEMENTS */
 .events {
   padding: 40px 20px;
   text-align: center;
+  width: 1000px; /* Largeur définie pour la section */
+  margin: 0 auto; /* Centre horizontalement */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les éléments à l'intérieur de la section */
 }
 
 .events h2 {
@@ -194,6 +346,8 @@ header p {
 .events ul {
   list-style: none;
   padding: 0;
+  width: 100%; /* Les éléments de la liste occupent toute la largeur disponible */
+  max-width: 600px; /* Limite la largeur maximale de la liste */
 }
 
 .events li {
@@ -201,7 +355,10 @@ header p {
   background-color: #4b4747;
   padding: 10px;
   border-radius: 5px;
+  width: 100%; /* Les éléments de la liste prennent toute la largeur de leur conteneur */
+  box-sizing: border-box; /* Assure que les marges et padding ne dépassent pas la largeur définie */
 }
+
 
 /* AVIS EMPLOYEURS */
 .employer-reviews {
@@ -464,4 +621,138 @@ header p {
     background-color: #222; /* Fond légèrement plus clair */
     width: 400px; /* La barre s’agrandit */
     box-shadow: 0 0 10px #00ff00; /* Lueur verte autour */
+}
+
+
+
+/* Section Projets */
+.projects {
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects h2 {
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.project {
+  background-color: #2d2d2d;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  position: relative; /* Pour positionner l'icône de manière absolue */
+}
+
+.project-info {
+  text-align: center;
+}
+
+.project-info h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  max-width: 300px;
+  max-height: 200px;
+  margin: 0 auto;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+.project-link {
+  font-size: 1.2em;
+  color: #1f8b19;
+  text-decoration: none;
+  border: 2px solid #1f8b19;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.project-link:hover {
+  background-color: #1f8b19;
+  color: #fff;
+}
+
+/* Icône œil centré et vert */
+.view-icon {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrer l'icône */
+  font-size: 5em;
+  color: #1f8b19; /* Vert */
+  opacity: 0; /* Initialement caché */
+  transition: opacity 0.3s ease;
+}
+
+.project:hover .view-icon {
+  opacity: 1; /* Icône apparaît au survol */
+}
+
+.project:hover .project-image {
+  opacity: 0.7; /* L'image devient plus transparente lors du survol */
+}
+
+
+/* Parallax Effect */
+.parallax {
+  position: relative;
+  background-image: url('../assets/par.jpg'); /* Mettez l'image de fond que vous souhaitez */
+  height: 500px; /* Hauteur de la section */
+  background-attachment: fixed; /* L'effet de parallaxe est activé avec fixed */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(37, 119, 50);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fe0000;
+}
+
+.parallax h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.parallax p {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .skills {
+      width: 100%;
+      font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .events{
+      width: 100%;
+      font-size: 14px;
+  }
 }
