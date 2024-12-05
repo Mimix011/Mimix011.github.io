@@ -13,9 +13,7 @@
 
     // Initialisation de cURL
     $ch = curl_init();
-    if ($ch === false) {
-        die('Erreur cURL : Impossible d\'initialiser la session cURL');
-    }
+
 
     // Définir l'URL de la requête cURL
     curl_setopt($ch, CURLOPT_URL, $url);
