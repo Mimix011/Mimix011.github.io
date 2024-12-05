@@ -48,7 +48,6 @@ typeEffect();
 function style_mode() {
   const darkModeToggle = document.getElementById('darkmode-toggle'); 
   const themeLink = document.getElementById('theme-link');
-  const themeLink2 = document.getElementById('theme-link1');
   var themeVideo = document.getElementById('background-video');
   var themeVideo1 = document.getElementById('background-video1');
   //
@@ -70,13 +69,11 @@ function style_mode() {
     darkModeToggle.checked = true;
     themeVideo.removeAttribute("hidden");
     themeLink.href = '/css/style.css';
-    themeLink2.href ='../css/style.css';
   } 
   else {
     darkModeToggle.checked = false;
     themeVideo1.removeAttribute("hidden");
     themeLink.href = '/css/style_clair.css';
-    themeLink2.href = '../css/style_claire.css';
   }
 
 
@@ -84,12 +81,10 @@ function style_mode() {
   darkModeToggle.addEventListener('change', () => {
     if (darkModeToggle.checked) {
       themeLink.href = '/css/style.css';
-      themeLink2.href ='../css/style.css';
       localStorage.setItem('darkMode', 'enabled');
     } else {
       // Si l'utilisateur désactive le mode sombre (mode clair)
       themeLink.href = '/css/style_clair.css'; 
-      themeLink2.href ='../css/style.css';
       localStorage.setItem('darkMode', 'disabled'); 
     }
     toggleVideoVisibility();
