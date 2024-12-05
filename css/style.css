@@ -68,7 +68,7 @@ h2 {
 }
 
 .menu > li {
-  margin: 0 1rem;
+  margin: 10px;
   overflow: hidden;
   
 }
@@ -127,7 +127,8 @@ h2 {
 /*bouton mode claire et sombre dans la bar de nav*/
 .switch{
   display: flex;
-  position: relative;
+  position: fixed;
+  right: 150px;
   width: 100px;
   height: 50px;
   border-radius: 50px;
@@ -162,6 +163,13 @@ input:checked + label:after{
   transform: translateX(-2%);
   background:linear-gradient(180deg,rgb(93, 4, 167), rgb(4, 213, 250) );
 }
+/*Logo*/
+.logo {
+  position: absolute;
+  right:1px;
+  top:10px;
+  height: 70px; /* Ajuste la taille du logo si nécessaire */
+}
 
 @media (max-width: 700px) {
 
@@ -175,14 +183,14 @@ input:checked + label:after{
   }
   .menu {
     position: absolute;
-    top: 0;
+    top: 20px;
     margin-top: 50px;
     left: 0;
     flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
-    
+    z-index: 1;
   }
   #menu-toggle ~ .menu li {
     height: 0;
@@ -209,7 +217,11 @@ input:checked + label:after{
   .menu > li:not(:last-child) {
     border-bottom: 1px solid #9e0000;
   }
-  
+  header {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+  }
   .switch{
     position: relative;
     padding: auto;
@@ -232,12 +244,25 @@ input:checked + label:after{
     flex-direction: column; /* Organiser les cartes en colonne */
     align-items: center;
   }
-  
-  .logo {
-    margin-left: 10px
-  }
-}
 
+  .switch{
+    right:40px;
+    width: 70px;
+    height: 40px;
+  }
+  .switch:after{
+    width: 35px;
+    top: 1px;
+    height: 35px;
+    left: 5px;
+  }
+  .logo{
+    height: 55px;
+  }
+  input:checked + label:after{
+    left: 33px;
+}
+}
 
 header {
   text-align: center;
@@ -505,12 +530,4 @@ header {
 {
   width:150px;
   height:150px;
-}
-
-.logo {
-  position: relative;
-  top: 40px;
-  left: 860px; 
-  transform: translateY(-50%);
-  height: 70px; /* Ajuste la taille du logo si nécessaire */
 }
