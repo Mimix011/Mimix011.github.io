@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio de Chameau Emile</title>
+  <title>Portfolio de Bacot Dimitri</title>
   <!-- Lien vers la police Silkscreen de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/dimitri.css">
@@ -263,12 +263,6 @@ while ($row = $result->fetch_assoc()) {
                 }
             } 
             
-            
-
-
-
-
-
             
         echo "</div>";
     echo "</div>";
