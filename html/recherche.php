@@ -28,11 +28,11 @@
         <li class="partenaire">
           <a href="#">partenaire</a>
             <ul class="partenaire_menu">
-              <li><a href="html/emeric.html">Emeric</a></li>
-              <li><a href="html/emile.html">Emile</a></li>
+              <li><a href="html/emeric.php">Emeric</a></li>
+              <li><a href="html/emile.php">Emile</a></li>
               <li><a href="html/jassim.html">Jassym</a></li>
               <li><a href="html/dimitri.html">Dimitri</a></li>
-              <li><a href="html/Ilyas.html">Ilyas</a></li>
+              <li><a href="html/Ilyass.php">Ilyas</a></li>
             </ul>
         </li>
         <li>

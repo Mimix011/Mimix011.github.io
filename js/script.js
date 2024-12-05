@@ -1,5 +1,6 @@
 
 
+
 // Texte dynamique avec alternance de couleurs
 const messages = [
   " print(''Bonjour / Welcome !'') ",
@@ -20,7 +21,7 @@ function typeEffect() {
 
   const coloredText = Array.from(currentSlice)
     .map((char, index) => {
-      const color = index % 2 === 0 ? 'white' : 'CornflowerBlue';
+      const color = index % 2 === 0 ? 'white' : 'MediumSlateBlue';
       return `<span style="color: ${color};">${char}</span>`;
     })
     .join('');
@@ -40,29 +41,56 @@ function typeEffect() {
 }
 
 typeEffect();
-document.addEventListener("DOMContentLoaded", function() {
-  const progressBar = document.querySelector('.progress_bar');
 
-  // Only proceed if the element exists
-  if (progressBar) {
-      progressBar.style.display = "none";
+//Récupérer les élement chéckbox et le lien vers le fichier css
 
-      window.addEventListener('scroll', handleScroll);
 
-      function handleScroll() {
-          progressBar.style.display = "block";
-          const height = document.body.scrollHeight; // taille du site
-          const windowHeight = window.innerHeight; // taille de l'affichage
-          const position = window.pageYOffset; // la position en pixels du document
+function style_mode() {
+  const darkModeToggle = document.getElementById('darkmode-toggle'); 
+  const themeLink = document.getElementById('theme-link');
+  var themeVideo = document.getElementById('background-video');
+  var themeVideo1 = document.getElementById('background-video1');
+  //
 
-          const trackLength = height - windowHeight; // taille du site - la partie affichée sur l'écran en ce moment
-          
-          const percentage = 
-                Math.floor((position / trackLength) * 100); // pourcentage du site déjà parcouru
-          
-          progressBar.style.right = (100 - percentage) + '%';
-      }
-  } else {
-      console.error('Progress bar element not found');
+  function toggleVideoVisibility() {
+    if (darkModeToggle.checked){
+      themeVideo.removeAttribute("hidden");
+      themeVideo1.setAttribute("hidden" ,"true");
+    }
+    else{
+      themeVideo1.removeAttribute("hidden");
+      themeVideo.setAttribute("hidden","true");
+    }
   }
-});
+
+
+  // Vérifie si l'état du mode sombre est mémorisé dans localStorage
+  if(localStorage.getItem('darkMode') === 'enabled') {
+    darkModeToggle.checked = true;
+    themeVideo.removeAttribute("hidden");
+    themeLink.href = 'css/style.css';
+  } 
+  else {
+    darkModeToggle.checked = false;
+    themeVideo1.removeAttribute("hidden");
+    themeLink.href = 'css/style_clair.css';
+  }
+
+
+  // Écoute les changements sur le checkbox (quand l'utilisateur change le mode)
+  darkModeToggle.addEventListener('change', () => {
+    if (darkModeToggle.checked) {
+      themeLink.href = 'css/style.css';
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      // Si l'utilisateur désactive le mode sombre (mode clair)
+      themeLink.href = 'css/style_clair.css'; 
+      localStorage.setItem('darkMode', 'disabled'); 
+    }
+    toggleVideoVisibility();
+  });
+}
+
+
+
+style_mode();
